@@ -127,7 +127,7 @@ OTHER TERMS FOR BIG O NOTATION/TIME COMPLEXITY
               O(n) -> Linear Time
               O(n^2) -> Quadratic time
 
-BIG O NOTATION/TIM COMPLEXITY OF OTHER THINGS
+BIG O NOTATION/TIME COMPLEXITY OF OTHER THINGS
 
 Arithmetic Operations have constant time complexity of O(1):
   It takes the processor the same amount of time to do 1+1 as 1000000+1
