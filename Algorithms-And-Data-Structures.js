@@ -136,7 +136,56 @@ Variable Assignment has constant time complexity of O(1):
   It takes the processor the same amount of time to do var x as var x = 1000000
 
 
-Space Complexity
+SPACE COMPLEXITY
+
+Space Complexity versus Time Complexity(Both use Big O Notation)
+
+Space Complexity: How much more memory use(RAM) do we need as the inputs provided to the Code gets larger?
+Time Complexity: How much more runtime do we need as he inputs provided to the Code gets larger?
+
+        Space Complexity Rules of Thumb
+- Storing values in varialbes always takes up memory.
+
+- Most Prmitives(Booleans and Numbers) takes up O(1)/Constant Space.
+    var x = 100 & var x = 200 take up SAME amount of memory.
+
+- Strings, Arrays and Objects take up O(n)/Linear Space
+    An Array w/4 elements takes up TWICE the memory of Array w/2 elements.
+
+function shoutOut(n) {
+    for(let i = 0; i < n; i++) {
+        console.log("upper");
+    }
+}
+Answer: O(1) Space Complexity
+
+const sum = arr => {
+    let total = 0;
+    arr.forEach(num => {
+        total += num
+    })
+    return total;
+}
+Answer: O(1) Space Complexity
+
+const reverseString = str => {
+    let reverseStr = "";
+    for(let i = 0; i < str.length; i ++) {
+        reversedStr = str[i] + reversedStr;
+    }
+    return reversedStr;
+}
+Answer: O(n) Space Complexity
+
+cont keepRandom = arr => {
+    let resArr = {};
+    arr.forEach(item => {
+        if (Math.random() < 0.5) {
+            resArr.push(item)
+        }
+    })
+}
+Answer: O(n/2) -> O(n) Space Complexity
 
 
 */
