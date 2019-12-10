@@ -187,5 +187,20 @@ cont keepRandom = arr => {
 }
 Answer: O(n/2) -> O(n) Space Complexity
 
+    WHY IS TIME COMPLEXITY PRIORITIZED OVER SPACE COMPLEXITY?
+- Costs to PRODUCE and RUN processors are much HIGHER compaered to RAM.
+
+        lOGARITHMS
+log Input/N = Operation
+base = 2, log 8 = 3 & log 16 = 4
+if the Input/N is "doubled"(base 2) then you only have to do "one" more operation
+
+    O(log N)--Logarithmic Time Complexity
+- If the Input is doubled then we only have to do one more Operation.
+
+
+    INTRODUCTION TO ALGORITHMS
+
+
 
 */
