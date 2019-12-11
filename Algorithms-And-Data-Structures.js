@@ -199,8 +199,5 @@ if the Input/N is "doubled"(base 2) then you only have to do "one" more operatio
 - If the Input is doubled then we only have to do one more Operation.
 
 
-    INTRODUCTION TO ALGORITHMS
-
-
 
 */
