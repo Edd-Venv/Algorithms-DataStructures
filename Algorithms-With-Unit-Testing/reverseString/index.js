@@ -59,6 +59,7 @@ function reverse(str){
     return output;
   }, "")
 }
+//Time/Space Complexity = O(n)
 */
 
 // TESTING CODE BELOW
