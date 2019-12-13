@@ -7,30 +7,44 @@
 //   reverseInt(-13) === -31
 //   reverseInt(-100) === -1
 
-function reverseInt(n) {}
+function reverseInt(n) {
+  "use strict";
+  /*let numbers = [];
+  for (let i = n.length; i >= 0; i--) {
+    numbers.push(n[i]);
+  }
+  console.log(numbers);
+  let intRegex = /-?\d{1,}/g;
+  console.log(n.match(intRegex));
+  return null;
+  if ((n[i] !== "0") | (numbers.length > 0)) {
+      numbers += n[i];
+      if (n[i] == "-") {
+        numbers[0] = "-";
+      }
+    }
+    //console.log(numbers);
 
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  */
+  n = n.toString();
+  let numbers = [];
+  let finalNumbers = "";
+  for (let i = n.length - 1; i >= 0; i--) {
+    if ((n[i] !== "0") | (numbers.length > 0)) {
+      numbers.push(n[i]);
+      if (n[i] == "-") {
+        numbers.unshift("-");
+        numbers.pop();
+      }
+    }
+  }
+  for (let i = 0; i < numbers.length; i++) {
+    finalNumbers += numbers[i];
+  }
+  console.log(finalNumbers);
+  return parseInt(finalNumbers, 10);
+}
+reverseInt(1408);
 
 mocha.setup("bdd");
 const { assert } = chai;
