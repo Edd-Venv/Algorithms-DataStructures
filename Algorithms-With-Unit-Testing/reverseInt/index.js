@@ -38,8 +38,8 @@ function reverseInt(n) {
       }
     }
   }
-  for (let i = 0; i < numbers.length; i++) {
-    finalNumbers += numbers[i];
+  for (let j = 0; j < numbers.length; j++) {
+    finalNumbers += numbers[j];
   }
   console.log(finalNumbers);
   return parseInt(finalNumbers, 10);
