@@ -8,11 +8,12 @@
 function palindrome(str) {
   "use strict";
 
+  str = str.toLowerCase();
   let reversedStr = "";
+
   for (let i = str.length - 1; i >= 0; i--) {
     reversedStr += str[i];
   }
-  //let strRegex = /<.*>/gi;&& strRegex.test(str) === true
 
   if (str === reversedStr) {
     return true;
@@ -20,6 +21,8 @@ function palindrome(str) {
     return false;
   }
 }
+//Time Complexity => (1*N) => O(n)
+//Space Complexity => O(n)
 
 mocha.setup("bdd");
 const { assert } = chai;
