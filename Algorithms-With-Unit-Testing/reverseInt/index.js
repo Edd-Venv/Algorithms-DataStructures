@@ -7,6 +7,8 @@
 //   reverseInt(-13) === -31
 //   reverseInt(-100) === -1
 
+//Solution 1
+
 function reverseInt(n) {
   "use strict";
   n = n.toString();
@@ -24,13 +26,33 @@ function reverseInt(n) {
   for (let j = 0; j < numbers.length; j++) {
     finalNumbers += numbers[j];
   }
-  /*
-  let intRegex = /-?\d{1,}/g;
-  console.log(n.match(intRegex));
-  */
+
+  // let intRegex = /-?\d{1,}/g;
+  //console.log(n.match(intRegex));
+
   return parseInt(finalNumbers, 10);
 }
 reverseInt(1408);
+
+//Time Complexity = 2 * N or O(2N) => O(N)
+//Space Complexity = O(N)
+
+/*
+//solution 2
+function reverseInt(n) {
+  let reversed = n
+    .toString()
+    .split("")
+    .reverse()
+    .join("");
+  reversed = parseInt(reversed);
+  if (n < 0) {
+    return reversed * -1;
+  }
+  return reversed;
+
+  //Time Complexity: O(log N)
+}*/
 
 mocha.setup("bdd");
 const { assert } = chai;
