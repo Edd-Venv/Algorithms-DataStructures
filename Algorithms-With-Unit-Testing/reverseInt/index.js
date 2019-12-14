@@ -9,23 +9,6 @@
 
 function reverseInt(n) {
   "use strict";
-  /*let numbers = [];
-  for (let i = n.length; i >= 0; i--) {
-    numbers.push(n[i]);
-  }
-  console.log(numbers);
-  let intRegex = /-?\d{1,}/g;
-  console.log(n.match(intRegex));
-  return null;
-  if ((n[i] !== "0") | (numbers.length > 0)) {
-      numbers += n[i];
-      if (n[i] == "-") {
-        numbers[0] = "-";
-      }
-    }
-    //console.log(numbers);
-
-  */
   n = n.toString();
   let numbers = [];
   let finalNumbers = "";
@@ -41,7 +24,10 @@ function reverseInt(n) {
   for (let j = 0; j < numbers.length; j++) {
     finalNumbers += numbers[j];
   }
-  console.log(finalNumbers);
+  /*
+  let intRegex = /-?\d{1,}/g;
+  console.log(n.match(intRegex));
+  */
   return parseInt(finalNumbers, 10);
 }
 reverseInt(1408);
