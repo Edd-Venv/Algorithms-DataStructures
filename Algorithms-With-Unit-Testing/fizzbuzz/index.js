@@ -11,6 +11,9 @@
 //   4
 //   buzz
 
+function fizzBuzz(n) {}
+/*
+// Solution 1
 function fizzBuzz(n) {
   "use strict";
   let numbers = [];
@@ -36,6 +39,9 @@ function fizzBuzz(n) {
     }
   }
 }
+//Time Complexity O(3*N) => O(N)
+//Space Complexity O(N)
+*/
 
 mocha.setup("bdd");
 const { assert } = chai;
