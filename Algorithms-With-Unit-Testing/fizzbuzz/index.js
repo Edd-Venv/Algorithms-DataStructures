@@ -11,7 +11,31 @@
 //   4
 //   buzz
 
-function fizzBuzz(n) {}
+function fizzBuzz(n) {
+  "use strict";
+  let numbers = [];
+  let reversedNumbers = [];
+
+  for (let i = n; i > 0; i--) {
+    numbers.push(n--);
+  }
+  for (let j = numbers.length - 1; j >= 0; j--) {
+    reversedNumbers.push(parseInt(numbers[j], 10));
+  }
+  for (let k = 0; k < reversedNumbers.length; k++) {
+    const reversedNumber = reversedNumbers[k];
+
+    if (reversedNumber % 3 === 0 && reversedNumber % 5 === 0) {
+      console.log("fizzbuzz");
+    } else if (reversedNumber % 3 === 0 && reversedNumber % 5 > 0) {
+      console.log("fizz");
+    } else if (reversedNumber % 5 === 0 && reversedNumber % 3 > 0) {
+      console.log("buzz");
+    } else {
+      console.log(reversedNumber);
+    }
+  }
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
