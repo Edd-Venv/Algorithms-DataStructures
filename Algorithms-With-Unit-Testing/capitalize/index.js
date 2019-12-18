@@ -5,6 +5,8 @@
 //   capitalize("I'm a little tea pot") --> 'I'm A Little Tea Pot'
 //   capitalize('sHoRt AnD sToUt') --> 'Short And Stout'
 
+/*
+//Solution 1
 function capitalize(str) {
   "use strict";
   let newStr = "";
@@ -23,7 +25,24 @@ function capitalize(str) {
   }
   return newStr;
 }
-console.log(capitalize("hey"));
+//Time Complexity = O(n)
+//Space Complexity = O(n)
+*/
+
+//Solution 2
+/*
+function capitalize(str) {
+  const arrOfWords = str.split(" ");
+  const arrOfWordsCased = [];
+
+  for (let i = 0; i < arrOfWords.length; i++) {
+    const word = arrOfWords[i];
+    arrOfWordsCased.push(word[0].toUpperCase() + word.slice(1).toLowerCase());
+  }
+  return arrOfWordsCased.join(" ");
+}
+//Time Complexity = O(n)
+*/
 
 mocha.setup("bdd");
 const { assert } = chai;
