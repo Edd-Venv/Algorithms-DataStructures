@@ -11,10 +11,6 @@
 //   4
 //   buzz
 
-//Solution 2
-function fizzBuzz(n) {}
-
-/*
 // Solution 1
 function fizzBuzz(n) {
   "use strict";
@@ -43,7 +39,45 @@ function fizzBuzz(n) {
 }
 //Time Complexity O(3*N) => O(N)
 //Space Complexity O(N)
+
+//Solution 2
+/*function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    if (i % 5 === 0 && i % 3 === 0) {
+      console.log("fizzbuzz");
+    } else if (i % 5 === 0) {
+      console.log("buzz");
+    } else if (i % 3 === 0) {
+      console.log("fizz");
+    } else {
+      console.log(i);
+    }
+  }
+}
+//Time Complexity = 1 * N => O(n)
+//Space Complexity = O(1)
 */
+//Solution 3
+/*
+function fizzBuzz(n) {
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+
+    if (i % 3 === 0) {
+      str += "fizz";
+    }
+
+    if (i % 5 === 0) {
+      str += "buzz";
+    }
+
+    if (str === "") {
+      str = i;
+    }
+
+    console.log(str);
+  }
+}*/
 
 mocha.setup("bdd");
 const { assert } = chai;
