@@ -13,6 +13,7 @@
 
 //Solution 2
 function fizzBuzz(n) {}
+
 /*
 // Solution 1
 function fizzBuzz(n) {
