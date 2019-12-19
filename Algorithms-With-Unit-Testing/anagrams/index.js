@@ -8,21 +8,25 @@
 //   anagrams('Heart!', 'EARTH') --> True
 //   anagrams('lol', 'lolc') --> False
 
-/*
-// 3/4 solved
+/*function anagrams(stringA, stringB) {}
+ */
+
+// Solution 1
 function anagrams(stringA, stringB) {
   "use strict";
   let stringC = "";
-  let newStringA = stringA.toLowerCase();
+  let sanitaizedStringA = "";
   let newStringB = stringB.toLowerCase();
-  let arrayA = [];
+  let reStringA = stringA.match(/[^\d\W]/gi);
 
-  for (let k = 0; k < newStringA.length; k++) {
-    arrayA.push(newStringA[k]);
+  for (let h = 0; h < reStringA.length; h++) {
+    sanitaizedStringA += reStringA[h];
   }
 
-  for (let i = 0; i < arrayA.length; i++) {
-    const A = arrayA[i];
+  let newStringA = sanitaizedStringA.toLowerCase();
+
+  for (let i = 0; i < newStringA.length; i++) {
+    const A = newStringA[i];
 
     for (let j = 0; j < newStringB.length; j++) {
       const B = newStringB[j];
@@ -31,17 +35,15 @@ function anagrams(stringA, stringB) {
         stringC += A;
       }
     }
-      //REMove arrayA[i] which isnt present in whole of B
   }
 
-  if (arrayA.length === stringC.length) {
+  if (newStringA.length === stringC.length) {
     return true;
   } else {
     return false;
   }
 }
-console.log(anagrams("hey!", " hey"));
-*/
+anagrams(".5...!hey....!", " ....hey");
 
 mocha.setup("bdd");
 const { assert } = chai;
