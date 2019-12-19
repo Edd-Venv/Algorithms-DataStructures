@@ -7,28 +7,40 @@
 //   anagrams('heart', '  earth') --> True
 //   anagrams('Heart!', 'EARTH') --> True
 //   anagrams('lol', 'lolc') --> False
-
+/*
+// 3/4 solved
 function anagrams(stringA, stringB) {
   "use strict";
   let stringC = "";
-  for (let i = 0; i < stringA.length; i++) {
-    const A = stringA[i];
+  let newStringA = stringA.toLowerCase();
+  let newStringB = stringB.toLowerCase();
+  let arrayA = [];
 
-    for (let j = 0; j < stringB.length; j++) {
-      const B = stringB[j];
+  for (let k = 0; k < newStringA.length; k++) {
+    arrayA.push(newStringA[k]);
+  }
+
+  for (let i = 0; i < arrayA.length; i++) {
+    const A = arrayA[i];
+
+    for (let j = 0; j < newStringB.length; j++) {
+      const B = newStringB[j];
 
       if (A === B) {
-        console.log(stringA[i] + "  " + stringB[j]);
-        stringC += StringA[i];
+        stringC += A;
       }
     }
+      arrayA[i]
   }
-  if (stringA.length === stringB.length) {
+
+  if (arrayA.length === stringC.length) {
     return true;
   } else {
     return false;
   }
 }
+console.log(anagrams("hey!", " hey"));
+*/
 
 mocha.setup("bdd");
 const { assert } = chai;
