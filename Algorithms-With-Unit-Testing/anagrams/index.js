@@ -7,6 +7,7 @@
 //   anagrams('heart', '  earth') --> True
 //   anagrams('Heart!', 'EARTH') --> True
 //   anagrams('lol', 'lolc') --> False
+
 /*
 // 3/4 solved
 function anagrams(stringA, stringB) {
@@ -30,7 +31,7 @@ function anagrams(stringA, stringB) {
         stringC += A;
       }
     }
-      arrayA[i]
+      //REMove arrayA[i] which isnt present in whole of B
   }
 
   if (arrayA.length === stringC.length) {
