@@ -8,10 +8,8 @@
 //   anagrams('Heart!', 'EARTH') --> True
 //   anagrams('lol', 'lolc') --> False
 
-/*function anagrams(stringA, stringB) {}
- */
-
 // Solution 1
+/*
 function anagrams(stringA, stringB) {
   "use strict";
   let stringC = "";
@@ -42,8 +40,10 @@ function anagrams(stringA, stringB) {
   } else {
     return false;
   }
-}
-anagrams(".5...!hey....!", " ....hey");
+}*/
+
+//Solution 2
+function anagrams(stringA, stringB) {}
 
 mocha.setup("bdd");
 const { assert } = chai;
