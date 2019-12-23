@@ -43,7 +43,10 @@ function anagrams(stringA, stringB) {
 }*/
 
 //Solution 2
-function anagrams(stringA, stringB) {}
+function anagrams(stringA, stringB) {
+  stringA = stringA.toLowerCase().replace(/[\W_]+/g, "");
+  stringB = stringB.toLowerCase().replace(/[\W_]+/g, "");
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
