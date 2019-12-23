@@ -8,7 +8,15 @@
 // caeserCipher("abcd", 100) === "wxyz";
 // caeserCipher("gurer ner 9 qbtf!", 13) === "there are 9 dogs!"
 
-function caesarCipher(str, shift) {}
+function caesarCipher(str, shift) {
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let alphabetArray = [];
+  let sanitizedString = str.toLowerCase();
+
+  for (let i = 0; i < alphabet.length; i++) {
+    alphabetArray.push(alphabet[i]);
+  }
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
