@@ -9,7 +9,7 @@
 //   anagrams('lol', 'lolc') --> False
 
 // Solution 1
-/*
+
 function anagrams(stringA, stringB) {
   "use strict";
   let stringC = "";
@@ -40,9 +40,12 @@ function anagrams(stringA, stringB) {
   } else {
     return false;
   }
-}*/
+}
+//Time Complexity = O(N) => O(N^2);
+//Space Complexity = O(N);
 
 //Solution 2
+/*
 function anagrams(stringA, stringB) {
   stringA = stringA.toLowerCase().replace(/[\W_]+/g, "");
   stringB = stringB.toLowerCase().replace(/[\W_]+/g, "");
@@ -68,7 +71,48 @@ function anagrams(stringA, stringB) {
   }
   return true;
 }
+//Time Complexity = O(2*N) => O(N);
+//Space Complexity = O(N);*/
 
+//Solution 3
+/*
+function anagrams(stringA, stringB) {
+  "use strict";
+
+  let A = stringA.match(/[^\d\W]/gi);
+  let B = stringB.match(/[^\d\W]/gi);
+  let arrayA = [];
+  let arrayB = [];
+
+  for (let i = 0; i < A.length; i++) {
+    arrayA.push(A[i].toLowerCase());
+  }
+  for (let j = 0; j < B.length; j++) {
+    arrayB.push(B[j].toLowerCase());
+  }
+
+  let sortedArrayA = arrayA.sort();
+  let sortedArrayB = arrayB.sort();
+
+  let sanitizedStringA = "";
+  let sanitizedStringB = "";
+
+  for (let k = 0; k < sortedArrayA.length; k++) {
+    sanitizedStringA += sortedArrayA[k];
+  }
+  for (let h = 0; h < sortedArrayB.length; h++) {
+    sanitizedStringB += sortedArrayB[h];
+  }
+
+  if (sanitizedStringA === sanitizedStringB) {
+    return true;
+  } else {
+    return false;
+  }
+}
+//Time Complexity = O(4*N) => O(N);
+//Space Complexity = O(N);
+*/
 mocha.setup("bdd");
 const { assert } = chai;
 
