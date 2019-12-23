@@ -46,6 +46,27 @@ function anagrams(stringA, stringB) {
 function anagrams(stringA, stringB) {
   stringA = stringA.toLowerCase().replace(/[\W_]+/g, "");
   stringB = stringB.toLowerCase().replace(/[\W_]+/g, "");
+
+  if (stringA.length !== stringB.length) {
+    return false;
+  }
+  const stringACharCount = {};
+
+  for (let i = 0; i < stringA.length; i++) {
+    const aChar = stringA[i];
+
+    stringACharCount[aChar] = stringACharCount[aChar] + 1 || 1;
+  }
+  for (let i = 0; i < stringB.length; i++) {
+    const bChar = stringB[i];
+
+    if (!stringACharCount[bChar]) {
+      return false;
+    } else {
+      stringACharCount[bChar]--;
+    }
+  }
+  return true;
 }
 
 mocha.setup("bdd");
