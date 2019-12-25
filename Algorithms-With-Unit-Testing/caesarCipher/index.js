@@ -9,14 +9,32 @@
 // caeserCipher("gurer ner 9 qbtf!", 13) === "there are 9 dogs!"
 
 function caesarCipher(str, shift) {
+  "use strict";
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let alphabetArray = [];
   let sanitizedString = str.toLowerCase();
+  let finalString = "";
 
   for (let i = 0; i < alphabet.length; i++) {
     alphabetArray.push(alphabet[i]);
   }
+
+  for (let j = 0; j < sanitizedString.length; j++) {
+    const char = sanitizedString[j];
+
+    for (let k = 0; k < alphabetArray.length; k++) {
+      const arrayChar = alphabetArray[k];
+
+      if (char === arrayChar) {
+        finalString += alphabetArray[k + shift];
+      } else {
+        finalString += char;
+      }
+    }
+  }
+  return finalString;
 }
+console.log(caesarCipher("abc", 1));
 
 mocha.setup("bdd");
 const { assert } = chai;
