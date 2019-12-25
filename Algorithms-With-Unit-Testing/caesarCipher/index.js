@@ -10,6 +10,13 @@
 
 function caesarCipher(str, shift) {
   "use strict";
+  /*let quoteSample6 = "The 5five boxing wizards jump quickly.";
+  let nonAlphabetRegex = /\W/g;
+  console.log(quoteSample6.match(nonAlphabetRegex).length);
+
+  let test = "7";
+  console.log(/[^a-z]/gi.test(test));
+  */
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let alphabetArray = [];
   let sanitizedString = str.toLowerCase();
@@ -22,19 +29,28 @@ function caesarCipher(str, shift) {
   for (let j = 0; j < sanitizedString.length; j++) {
     const char = sanitizedString[j];
 
-    for (let k = 0; k < alphabetArray.length; k++) {
-      const arrayChar = alphabetArray[k];
+    if (/[^a-z]/gi.test(char)) {
+      finalString += char;
+    } else {
+      for (let k = 0; k < alphabetArray.length; k++) {
+        const arrayChar = alphabetArray[k];
 
-      if (char === arrayChar) {
-        finalString += alphabetArray[k + shift];
-      } else {
-        finalString += char;
+        if (char === arrayChar) {
+          if (!alphabetArray[k + shift]) {
+            //console.log(alphabetArray[shift]);
+          } else if (alphabetArray[k + shift]) {
+            finalString += alphabetArray[k + shift];
+          }
+          //console.log("matched " + char);
+        } /*else if (char !== arrayChar) {
+          finalString += char;
+        }*/
       }
     }
   }
-  return finalString;
+  console.log(finalString);
 }
-console.log(caesarCipher("abc", 1));
+caesarCipher("!1a", 25);
 
 mocha.setup("bdd");
 const { assert } = chai;
