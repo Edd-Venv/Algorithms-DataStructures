@@ -10,13 +10,7 @@
 
 function caesarCipher(str, shift) {
   "use strict";
-  /*let quoteSample6 = "The 5five boxing wizards jump quickly.";
-  let nonAlphabetRegex = /\W/g;
-  console.log(quoteSample6.match(nonAlphabetRegex).length);
 
-  let test = "7";
-  console.log(/[^a-z]/gi.test(test));
-  */
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
   let alphabetArray = [];
   let sanitizedString = str.toLowerCase();
@@ -37,22 +31,29 @@ function caesarCipher(str, shift) {
 
         if (char === arrayChar) {
           if (!alphabetArray[k + shift]) {
+            for (let h = 0; h <= k + shift; h++) {
+              let appendLetter = alphabetArray.shift();
+              alphabetArray.push(appendLetter);
+              alphabetArray.unshift(appendLetter);
+              //console.log(alphabetArray);
+            }
+            console.log(alphabetArray);
+            finalString += alphabetArray[k + shift];
+            //console.log(alphabetArray);
             //console.log(alphabetArray[shift]);
           } else if (alphabetArray[k + shift]) {
             finalString += alphabetArray[k + shift];
           }
-          //console.log("matched " + char);
-        } /*else if (char !== arrayChar) {
-          finalString += char;
-        }*/
+        }
       }
     }
   }
   console.log(finalString);
+  return finalString;
 }
-caesarCipher("!1a", 25);
+caesarCipher("!1ab", 25);
 
-mocha.setup("bdd");
+/*mocha.setup("bdd");
 const { assert } = chai;
 
 describe("caesarCipher()", () => {
@@ -66,4 +67,4 @@ describe("caesarCipher()", () => {
   });
 });
 
-mocha.run();
+mocha.run();*/
