@@ -31,10 +31,13 @@ function caesarCipher(str, shift) {
 
         if (char === arrayChar) {
           if (!alphabetArray[k + shift]) {
-            for (let h = 0; h <= k + shift; h++) {
+            for (let h = 0; h <= k; h++) {
               let appendLetter = alphabetArray[h];
+              alphabetArray.shift();
               alphabetArray.push(appendLetter);
-              console.log(h);
+              alphabetArray.unshift(appendLetter);
+
+              //console.log(h);
             }
             console.log(alphabetArray);
           } else if (alphabetArray[k + shift]) {
@@ -47,8 +50,21 @@ function caesarCipher(str, shift) {
   console.log(finalString);
   return finalString;
 }
-caesarCipher("!1ab", 25);
+caesarCipher("abc", 25);
 
+/*
+ if (char === arrayChar) {
+          if (!alphabetArray[k + shift]) {
+            for (let h = 0; h <= k + shift; h++) {
+              let appendLetter = alphabetArray[h];
+              alphabetArray.push(appendLetter);
+              //console.log(h);
+            }
+            console.log(alphabetArray);
+          } else if (alphabetArray[k + shift]) {
+            finalString += alphabetArray[k + shift];
+          }
+*/
 /*mocha.setup("bdd");
 const { assert } = chai;
 
