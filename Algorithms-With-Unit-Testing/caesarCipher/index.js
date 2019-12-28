@@ -30,7 +30,39 @@
 //Time Complexity = O(n);
 //Space Complexity = O(n);*/
 
-function caesarCipher(str, shift) {
+//Solution 2
+/*function caesarCipher(str, shift) {
+  "use strict";
+
+  let alphabet = "abcdefghijklmnopqrstuvwxyz";
+  let alphabetArray = [];
+  let sanitizedString = str.toLowerCase();
+  let finalString = "";
+
+  for (let i = 0; i < alphabet.length; i++) {
+    alphabetArray.push(alphabet[i]);
+  }
+
+  for (let j = 0; j < sanitizedString.length; j++) {
+    const char = sanitizedString[j];
+
+    if (/[^a-z]/gi.test(char)) {
+      finalString += char;
+      continue;
+    } else {
+      const index = alphabetArray.indexOf(char);
+      const processedIndex = (index + shift) % 26;
+      finalString += alphabetArray[processedIndex];
+    }
+  }
+
+  return finalString;
+}
+caesarCipher("!  abcd", 25);
+*/
+
+//Solution 3
+/*function caesarCipher(str, shift) {
   "use strict";
 
   let alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -70,12 +102,12 @@ function caesarCipher(str, shift) {
         }
       }
     }
-    console.log(alphabetArray);
   }
 
   return finalString;
 }
 caesarCipher("abcd", 26);
+*/
 
 /*mocha.setup("bdd");
 const { assert } = chai;
