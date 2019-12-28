@@ -16,32 +16,41 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  "use strict";
 
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  let resultString = "";
+  let resultArray = [];
 
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  for (let i = 0; i < n; i++) {
+    resultArray.push(" ");
+  }
 
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  for (let j = 0; j < n; j++) {
+    resultArray[j] = "#";
 
-mocha.setup("bdd");
+    for (let k = 0; k < n; k++) {
+      resultString += resultArray[k];
+
+      //resultArray.shift();
+      /*if (resultString.length > n) {
+        console.log(resultString);
+        resultString;
+        console.log(resultString);
+      }*/
+    }
+
+    /*  const test = resultArray.join("");
+    console.log(test);*/
+
+    console.log(resultString);
+    console.log(resultString.length);
+  }
+}
+
+steps(3);
+
+/*mocha.setup("bdd");
 const { assert } = chai;
 console.log = sinon.spy();
 
@@ -56,3 +65,4 @@ describe("Steps", () => {
 });
 
 mocha.run();
+*/
