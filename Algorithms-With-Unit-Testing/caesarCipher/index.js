@@ -8,6 +8,28 @@
 // caeserCipher("abcd", 100) === "wxyz";
 // caeserCipher("gurer ner 9 qbtf!", 13) === "there are 9 dogs!"
 
+//Solution 1
+/*function caesarCipher(str, shift) {
+  "use strict";
+  let alphabetArr = "abcdefghijklmnopqrstuvwxyz".split("");
+  let res = "";
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    const idx = alphabetArr.indexOf(char);
+    if (idx === -1) {
+      res += char;
+      continue;
+    }
+
+    const encodedIdx = (idx + shift) % 26;
+    res += alphabetArr[encodedIdx];
+  }
+  return res;
+}
+//Time Complexity = O(n);
+//Space Complexity = O(n);*/
+
 function caesarCipher(str, shift) {
   "use strict";
 
@@ -25,47 +47,31 @@ function caesarCipher(str, shift) {
 
     if (/[^a-z]/gi.test(char)) {
       finalString += char;
+      continue;
     } else {
       for (let k = 0; k < alphabetArray.length; k++) {
         const arrayChar = alphabetArray[k];
 
         if (char === arrayChar) {
-          if (!alphabetArray[k + shift]) {
-            for (let h = 0; h <= k; h++) {
-              let appendLetter = alphabetArray[h];
-              alphabetArray.shift();
-              alphabetArray.push(appendLetter);
-              alphabetArray.unshift(appendLetter);
-
-              //console.log(h);
-            }
-            console.log(alphabetArray);
-          } else if (alphabetArray[k + shift]) {
+          if (alphabetArray[k + shift]) {
             finalString += alphabetArray[k + shift];
+            break;
+          } else if (!alphabetArray[k + shift]) {
+            for (let h = 0; h <= k + shift; h++) {
+              let appendLetter = alphabetArray[h];
+              alphabetArray.push(appendLetter);
+            }
           }
         }
       }
     }
   }
-  console.log(finalString);
+
   return finalString;
 }
-caesarCipher("abc", 25);
+caesarCipher("gurer ner 9 qbtf!", 13);
 
-/*
- if (char === arrayChar) {
-          if (!alphabetArray[k + shift]) {
-            for (let h = 0; h <= k + shift; h++) {
-              let appendLetter = alphabetArray[h];
-              alphabetArray.push(appendLetter);
-              //console.log(h);
-            }
-            console.log(alphabetArray);
-          } else if (alphabetArray[k + shift]) {
-            finalString += alphabetArray[k + shift];
-          }
-*/
-/*mocha.setup("bdd");
+mocha.setup("bdd");
 const { assert } = chai;
 
 describe("caesarCipher()", () => {
@@ -79,4 +85,4 @@ describe("caesarCipher()", () => {
   });
 });
 
-mocha.run();*/
+mocha.run();
