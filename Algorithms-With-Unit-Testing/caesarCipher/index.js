@@ -45,7 +45,10 @@ function caesarCipher(str, shift) {
   for (let j = 0; j < sanitizedString.length; j++) {
     const char = sanitizedString[j];
 
+    //Use Regex to test for non alphabetic Charecters.
     if (/[^a-z]/gi.test(char)) {
+      //If found add to the final string and
+      //continue with the next iteration of the loop.
       finalString += char;
       continue;
     } else {
@@ -55,6 +58,8 @@ function caesarCipher(str, shift) {
         if (char === arrayChar) {
           if (alphabetArray[k + shift]) {
             finalString += alphabetArray[k + shift];
+            //break out of inner loop and go to the next
+            //charecter in the string
             break;
           } else if (!alphabetArray[k + shift]) {
             for (let h = 0; h <= k + shift; h++) {
@@ -65,13 +70,14 @@ function caesarCipher(str, shift) {
         }
       }
     }
+    console.log(alphabetArray);
   }
 
   return finalString;
 }
-caesarCipher("gurer ner 9 qbtf!", 13);
+caesarCipher("abcd", 26);
 
-mocha.setup("bdd");
+/*mocha.setup("bdd");
 const { assert } = chai;
 
 describe("caesarCipher()", () => {
@@ -86,3 +92,4 @@ describe("caesarCipher()", () => {
 });
 
 mocha.run();
+*/
