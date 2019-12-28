@@ -32,15 +32,11 @@ function caesarCipher(str, shift) {
         if (char === arrayChar) {
           if (!alphabetArray[k + shift]) {
             for (let h = 0; h <= k + shift; h++) {
-              let appendLetter = alphabetArray.shift();
+              let appendLetter = alphabetArray[h];
               alphabetArray.push(appendLetter);
-              alphabetArray.unshift(appendLetter);
-              //console.log(alphabetArray);
+              console.log(h);
             }
             console.log(alphabetArray);
-            finalString += alphabetArray[k + shift];
-            //console.log(alphabetArray);
-            //console.log(alphabetArray[shift]);
           } else if (alphabetArray[k + shift]) {
             finalString += alphabetArray[k + shift];
           }
