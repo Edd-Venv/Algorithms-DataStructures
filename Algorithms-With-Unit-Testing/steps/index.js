@@ -75,6 +75,25 @@ function steps(n) {
 //Time Complexity = O(n^2);
 //Space Complexity = O(n);
 
+//Solution 4
+
+/*function steps(n) {
+  "use strict";
+
+  for (let i = 0; i < n; i++) {
+    resultArray.push(" ");
+  }
+
+  for (let j = 0; j < n; j++) {
+    
+      resultArray[j] = " ";
+      resultArray[j] = "#";
+
+      const finalResult = resultArray.join("");
+      console.log(finalResult);
+}
+*/
+
 mocha.setup("bdd");
 const { assert } = chai;
 console.log = sinon.spy();
