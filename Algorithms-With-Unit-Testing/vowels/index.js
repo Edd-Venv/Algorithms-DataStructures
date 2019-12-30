@@ -7,8 +7,26 @@
 //   vowels('aEiOu') --> 5
 //   vowels('I am a world-class developer using iterations') --> 16
 
-function vowels(str) {}
+//solution 1
+/*function vowels(str) {
+  "use strict";
+  let sanitizedString = str.toLowerCase();
+  let regex = /[aeiou]/g;
+  let count = sanitizedString.match(regex);
 
+  if (count !== null) {
+    return count.length;
+  } else {
+    return 0;
+  }
+}
+*/
+
+//Solution 2
+function vowels(str) {
+  "use strict";
+
+}
 mocha.setup("bdd");
 const { assert } = chai;
 
