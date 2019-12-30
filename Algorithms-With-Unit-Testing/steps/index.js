@@ -16,6 +16,8 @@
 //       '### '
 //       '####'
 
+//Solution 1
+/*
 function steps(n) {
   "use strict";
 
@@ -32,7 +34,45 @@ function steps(n) {
     console.log(finalResult);
   }
 }
+*/
 //Time Complexity = O(n);
+//Space Complexity = O(n);
+
+//Solution 2
+/*function steps(n) {
+  "use strict";
+
+  for (let i = 1; i <= n; i++) {
+    let step = "";
+
+    for (let hash = i; hash > 0; hash--) {
+      step += "#";
+    }
+    for (let space = n - i; space > 0; space--) {
+      step += " ";
+    }
+
+    console.log(step);
+  }
+}
+*/
+//Time Complexity = O(n^2);
+//Space Complexity = O(n);
+
+//Solution 3
+/*
+function steps(n) {
+  "use strict";
+
+  for (let i = 1; i <= n; i++) {
+    let step = "";
+    step += "#".repeat(i);
+    step += " ".repeat(n - i);
+
+    console.log(step);
+  }
+}*/
+//Time Complexity = O(n^2);
 //Space Complexity = O(n);
 
 mocha.setup("bdd");
