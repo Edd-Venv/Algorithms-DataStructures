@@ -19,7 +19,6 @@
 function steps(n) {
   "use strict";
 
-  let resultString = "";
   let resultArray = [];
 
   for (let i = 0; i < n; i++) {
@@ -29,28 +28,14 @@ function steps(n) {
   for (let j = 0; j < n; j++) {
     resultArray[j] = "#";
 
-    for (let k = 0; k < n; k++) {
-      resultString += resultArray[k];
-
-      //resultArray.shift();
-      /*if (resultString.length > n) {
-        console.log(resultString);
-        resultString;
-        console.log(resultString);
-      }*/
-    }
-
-    /*  const test = resultArray.join("");
-    console.log(test);*/
-
-    console.log(resultString);
-    console.log(resultString.length);
+    const finalResult = resultArray.join("");
+    console.log(finalResult);
   }
 }
+//Time Complexity = O(n);
+//Space Complexity = O(n);
 
-steps(3);
-
-/*mocha.setup("bdd");
+mocha.setup("bdd");
 const { assert } = chai;
 console.log = sinon.spy();
 
@@ -65,4 +50,3 @@ describe("Steps", () => {
 });
 
 mocha.run();
-*/
