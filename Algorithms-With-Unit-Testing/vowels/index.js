@@ -25,8 +25,13 @@
 //Solution 2
 function vowels(str) {
   "use strict";
+  let sanitizedString = str.toLowerCase();
+  let vowelsString = "aeiou";
+  let count = 0;
 
+  for (let i = 0; i < vowelsString; i++) {}
 }
+/*
 mocha.setup("bdd");
 const { assert } = chai;
 
@@ -42,3 +47,4 @@ describe("Vowels", () => {
 });
 
 mocha.run();
+*/
