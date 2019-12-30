@@ -16,35 +16,17 @@
 function pyramid(n) {
   "use strict";
 
-  let resultArray = [];
-
   if (n >= 1) {
-    for (let i = 0; i < n; i++) {
-      resultArray.push(" ");
+    for (let i = 1; i <= n; i++) {
+      const padding = " ".repeat(n - i);
+      const hashes = "#".repeat(i * 2 - 1);
+      console.log(padding + hashes + padding);
     }
-
-    for (let j = 0; j < n; j++) {
-      if (n === 1) {
-        resultArray[j] = "#";
-        const finalResult = resultArray.join("");
-        console.log(finalResult);
-        break;
-      } else if (n > 1) {
-        resultArray[j] = " ";
-        resultArray[j] = "#";
-
-        const finalResult = resultArray.join("");
-        console.log(finalResult);
-        // console.log(resultArray);
-      }
-    }
-  } else {
-    console.log("Enter A Possitive Number.");
   }
 }
-pyramid(3);
+//Time Complexity = O(n^2);
 
-/*mocha.setup("bdd");
+mocha.setup("bdd");
 const { assert } = chai;
 console.log = sinon.spy();
 
@@ -59,4 +41,3 @@ describe("Pyramid", () => {
 });
 
 mocha.run();
-*/
