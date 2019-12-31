@@ -23,7 +23,7 @@
 */
 
 //Solution 2
-function vowels(str) {
+/*function vowels(str) {
   "use strict";
   let sanitizedString = str.toLowerCase();
   let vowelsString = "aeiou";
@@ -46,8 +46,32 @@ function vowels(str) {
     return 0;
   }
 }
-//Time Complexity = O(n^2);
-//Space Complexity = O(n);
+//Time Complexity = O(n);
+//Space Complexity = O(1);
+
+*/
+//Solution 3
+
+function vowels(str) {
+  str = str.toLowerCase();
+  const vowels = "aeiou".split("");
+  let count = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+
+    for (let j = 0; j < vowels.length; j++) {
+      const vowel = vowels[j];
+
+      if (char === vowel) {
+        count++;
+      }
+    }
+  }
+  return count;
+}
+//Time Complexity = O(n);
+//Space Complexity = O(1);
 
 mocha.setup("bdd");
 const { assert } = chai;
