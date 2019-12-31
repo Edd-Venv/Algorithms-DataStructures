@@ -29,24 +29,24 @@ function vowels(str) {
   let vowelsString = "aeiou";
   let count = 0;
 
-  for (let i = 0; i < vowelsString; i++) {
+  for (let i = 0; i < vowelsString.length; i++) {
     const vowel = vowelsString[i];
 
-    for (let j = 0; j < sanitizedString; j++) {
+    for (let j = 0; j < sanitizedString.length; j++) {
       const string = sanitizedString[j];
 
       if (vowel === string) {
-        count++;
+        count += 1;
       }
     }
   }
-  if ((count = 0)) {
-    return 0;
-  } else {
+  if (count > 0) {
     return count;
+  } else {
+    return 0;
   }
 }
-/*
+
 mocha.setup("bdd");
 const { assert } = chai;
 
@@ -62,4 +62,3 @@ describe("Vowels", () => {
 });
 
 mocha.run();
-*/
