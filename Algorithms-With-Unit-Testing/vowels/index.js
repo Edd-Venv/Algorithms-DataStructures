@@ -29,7 +29,22 @@ function vowels(str) {
   let vowelsString = "aeiou";
   let count = 0;
 
-  for (let i = 0; i < vowelsString; i++) {}
+  for (let i = 0; i < vowelsString; i++) {
+    const vowel = vowelsString[i];
+
+    for (let j = 0; j < sanitizedString; j++) {
+      const string = sanitizedString[j];
+
+      if (vowel === string) {
+        count++;
+      }
+    }
+  }
+  if ((count = 0)) {
+    return 0;
+  } else {
+    return count;
+  }
 }
 /*
 mocha.setup("bdd");
