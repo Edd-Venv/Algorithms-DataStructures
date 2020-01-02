@@ -6,36 +6,19 @@
 // linearSearchIncludes(foods, "pizza") --> true
 // linearSearchFind(foods, food => food === "pizza") --> "pizza"
 
-function linearSearchIndexOf(arr, val) {}
+function linearSearchIndexOf(arr, val) {
+  //Should return the numerial index
+}
 
-function linearSearchIncludes(arr, val) {}
+/*function linearSearchIncludes(arr, val) {
+  //should return 1 for true and -1 for false
+}
 
-function linearSearchFind(arr, cb) {}
-
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
-
-mocha.setup("bdd");
+function linearSearchFind(arr, cb) {
+  //Should return return cb if exists else return undefined
+}
+*/
+/*mocha.setup("bdd");
 const { assert } = chai;
 
 const foods = ["pizza", "orange", "yogurt"];
@@ -77,3 +60,4 @@ describe.skip("linearSearchFind()", () => {
 });
 
 mocha.run();
+*/
