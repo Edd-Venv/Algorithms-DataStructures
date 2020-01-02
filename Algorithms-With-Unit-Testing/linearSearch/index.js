@@ -7,9 +7,25 @@
 // linearSearchFind(foods, food => food === "pizza") --> "pizza"
 
 function linearSearchIndexOf(arr, val) {
-  //Should return the numerial index and -1 for false
   "use strict";
+
+  for (let i = 0; i < arr.length; i++) {
+    const searchedValue = val;
+    const arrayValue = arr[i];
+
+    if (searchedValue === arrayValue) {
+      return i;
+    }
+  }
+
+  return -1;
 }
+//Time Complexity = O(n);
+//Space Complexity = O(n);
+
+//console.log(
+//linearSearchIndexOf(["test", "testing", "tester", "test"], "tester")
+//);
 
 /*function linearSearchIncludes(arr, val) {
   //should return true and false
@@ -19,7 +35,9 @@ function linearSearchFind(arr, cb) {
   //Should return return cb if exists else return undefined
 }
 */
-/*mocha.setup("bdd");
+
+/*
+mocha.setup("bdd");
 const { assert } = chai;
 
 const foods = ["pizza", "orange", "yogurt"];
