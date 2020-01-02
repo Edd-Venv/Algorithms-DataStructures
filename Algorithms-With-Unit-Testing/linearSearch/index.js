@@ -23,20 +23,40 @@ function linearSearchIndexOf(arr, val) {
 //Time Complexity = O(n);
 //Space Complexity = O(n);
 
-//console.log(
-//linearSearchIndexOf(["test", "testing", "tester", "test"], "tester")
-//);
+function linearSearchIncludes(arr, val) {
+  "use strict";
 
-/*function linearSearchIncludes(arr, val) {
-  //should return true and false
+  for (let j = 0; j < arr.length; j++) {
+    const searchedValue = val;
+    const arrayValue = arr[j];
+
+    if (searchedValue === arrayValue) {
+      return true;
+    }
+  }
+
+  return false;
 }
+//Time Complexity = O(n);
+//Space Complexity = O(n);
 
 function linearSearchFind(arr, cb) {
-  //Should return return cb if exists else return undefined
-}
-*/
+  "use strict";
 
-/*
+  for (let k = 0; k < arr.length; k++) {
+    const searchedValue = cb;
+    const arrayValue = arr[k];
+
+    if (searchedValue === arrayValue) {
+      return searchedValue;
+    }
+  }
+
+  return undefined;
+}
+//Time Complexity = O(n);
+//Space Complexity = O(n);
+
 mocha.setup("bdd");
 const { assert } = chai;
 
@@ -79,4 +99,3 @@ describe.skip("linearSearchFind()", () => {
 });
 
 mocha.run();
-*/
