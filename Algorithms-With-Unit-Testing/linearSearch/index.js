@@ -42,13 +42,13 @@ function linearSearchIncludes(arr, val) {
 
 function linearSearchFind(arr, cb) {
   "use strict";
+  const callback = cb;
 
-  for (let k = 0; k < arr.length; k++) {
-    const searchedValue = cb;
-    const arrayValue = arr[k];
+  for (let i = 0; i < arr.length; i++) {
+    const arrayValue = arr[i];
 
-    if (searchedValue === arrayValue) {
-      return searchedValue;
+    if (callback(arrayValue) === true) {
+      return arrayValue;
     }
   }
 
@@ -73,7 +73,7 @@ describe("linearSearchIndexOf()", () => {
   });
 });
 
-describe.skip("linearSearchIncludes()", () => {
+describe("linearSearchIncludes()", () => {
   it("returns true if item found", () => {
     assert.equal(linearSearchIncludes(foods, "pizza"), true);
   });
@@ -82,7 +82,7 @@ describe.skip("linearSearchIncludes()", () => {
   });
 });
 
-describe.skip("linearSearchFind()", () => {
+describe("linearSearchFind()", () => {
   it("returns item back if found", () => {
     const kevin = people[0];
     assert.equal(
