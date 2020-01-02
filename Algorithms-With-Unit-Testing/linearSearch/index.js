@@ -7,11 +7,12 @@
 // linearSearchFind(foods, food => food === "pizza") --> "pizza"
 
 function linearSearchIndexOf(arr, val) {
-  //Should return the numerial index
+  //Should return the numerial index and -1 for false
+  "use strict";
 }
 
 /*function linearSearchIncludes(arr, val) {
-  //should return 1 for true and -1 for false
+  //should return true and false
 }
 
 function linearSearchFind(arr, cb) {
