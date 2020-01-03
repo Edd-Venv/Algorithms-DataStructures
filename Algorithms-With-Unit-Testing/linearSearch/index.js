@@ -6,6 +6,10 @@
 // linearSearchIncludes(foods, "pizza") --> true
 // linearSearchFind(foods, food => food === "pizza") --> "pizza"
 
+/*
+Linear Time Complexity is the best we can do for an unsorted array.
+*/
+
 function linearSearchIndexOf(arr, val) {
   "use strict";
 
