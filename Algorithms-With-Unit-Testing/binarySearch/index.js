@@ -7,9 +7,33 @@ Binary Search only works on sorted Arrays, and is able to search that array much
 than Linear Search due to the present.
 */
 
-const binarySearch = (sortedArr, value) => {};
+const binarySearch = (sortedArr, value) => {
+  "use strict";
 
-mocha.setup("bdd");
+  let middleIndex = sortedArr.length / 2;
+  let middle = sortedArr[middleIndex];
+
+  if (value === middle) {
+    return value;
+  } else if (value > middle) {
+    for (let i = 0; i < middle; i++) {
+      if (value[i] === middle) {
+        return i;
+      }
+    }
+  } else if (value < middle) {
+    for (let j = sortedArr.length; j > middle; j--) {
+      if (value[j] === middle) {
+        return i;
+      }
+    }
+  } else {
+    return -1;
+  }
+};
+console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8));
+
+/*mocha.setup("bdd");
 const { assert } = chai;
 
 const sortedNumsArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -29,3 +53,4 @@ describe("binarySearch()", () => {
 });
 
 mocha.run();
+*/
