@@ -4,6 +4,7 @@
 // stringPatternSearch("lolol", "lol") --> 2
 
 //Solution 1
+
 function stringPatternSearch(text, pattern) {
   "use strict";
   let string = "";
@@ -22,6 +23,28 @@ function stringPatternSearch(text, pattern) {
 }
 //Time Complexity = O(n);
 //Space Complexity = O(n);
+
+//Solution 2
+/*function stringPatternSearch(text, pattern) {
+  "use strict";
+  let count = 0;
+
+  for (let i = 0; i < text.length; i++) {
+    for (let j = 0; j < pattern.length; j++) {
+      const patternChar = pattern[j];
+      if (patternChar !== text[i + j]) {
+        break;
+      }
+
+      if (j === pattern.length - 1) {
+        count++;
+      }
+    }
+  }
+  return count;
+}*/
+//Time Complexity = O(N*M);
+//Space Complexity = O(1);
 
 mocha.setup("bdd");
 const { assert } = chai;
