@@ -9,31 +9,35 @@ than Linear Search due to the present.
 
 const binarySearch = (sortedArr, value) => {
   "use strict";
+  if (sortedArr.length === 1) {
+    if (sortedArr[0] !== value) {
+      return -1;
+    }
+    return 0;
+  } else {
+    let middleIndex = sortedArr.length / 2;
+    let middle = sortedArr[Math.floor(middleIndex)];
 
-  let middleIndex = sortedArr.length / 2;
-
-  let middle = sortedArr[Math.floor(middleIndex)];
-
-  if (value === middle) {
-    return value;
-  } else if (value > middle) {
-    for (let i = middle; i < sortedArr.length; i++) {
-      if (sortedArr[i] === value) {
-        return i;
+    if (value === middle) {
+      return value;
+    } else if (value > middle) {
+      for (let i = middle; i < sortedArr.length; i++) {
+        if (sortedArr[i] === value) {
+          return i;
+        }
+      }
+    } else if (value < middle) {
+      for (let j = middle; j >= 0; j--) {
+        if (sortedArr[j] === value) {
+          return j;
+        }
       }
     }
-  } else if (value < middle) {
-    for (let j = middle; j >= 0; j--) {
-      if (sortedArr[j] === value) {
-        return j;
-      }
-    }
+    return -1;
   }
-  return -1;
 };
-console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6));
 
-/*mocha.setup("bdd");
+mocha.setup("bdd");
 const { assert } = chai;
 
 const sortedNumsArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -53,4 +57,3 @@ describe("binarySearch()", () => {
 });
 
 mocha.run();
-*/
