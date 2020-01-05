@@ -11,27 +11,27 @@ const binarySearch = (sortedArr, value) => {
   "use strict";
 
   let middleIndex = sortedArr.length / 2;
-  let middle = sortedArr[middleIndex];
+
+  let middle = sortedArr[Math.floor(middleIndex)];
 
   if (value === middle) {
     return value;
   } else if (value > middle) {
-    for (let i = 0; i < middle; i++) {
-      if (value[i] === middle) {
+    for (let i = middle; i < sortedArr.length; i++) {
+      if (sortedArr[i] === value) {
         return i;
       }
     }
   } else if (value < middle) {
-    for (let j = sortedArr.length; j > middle; j--) {
-      if (value[j] === middle) {
-        return i;
+    for (let j = middle; j >= 0; j--) {
+      if (sortedArr[j] === value) {
+        return j;
       }
     }
-  } else {
-    return -1;
   }
+  return -1;
 };
-console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 8));
+console.log(binarySearch([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 6));
 
 /*mocha.setup("bdd");
 const { assert } = chai;
