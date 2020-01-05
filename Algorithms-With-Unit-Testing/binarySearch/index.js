@@ -6,6 +6,7 @@
 Binary Search only works on sorted Arrays, and is able to search that array much faster
 than Linear Search due to the present.
 */
+
 //Solution 1
 const binarySearch = (sortedArr, value) => {
   let left = 0;
@@ -25,6 +26,7 @@ const binarySearch = (sortedArr, value) => {
   }
   return -1;
 };
+//Time Complexity = O(logN)
 
 //Solution 2
 /*const binarySearch = (sortedArr, value) => {
