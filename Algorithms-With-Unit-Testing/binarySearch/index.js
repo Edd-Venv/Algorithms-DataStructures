@@ -6,8 +6,28 @@
 Binary Search only works on sorted Arrays, and is able to search that array much faster
 than Linear Search due to the present.
 */
-
+//Solution 1
 const binarySearch = (sortedArr, value) => {
+  let left = 0;
+  let right = sortedArr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    const midVal = sortedArr[mid];
+
+    if (midVal === value) {
+      return mid;
+    } else if (midVal < value) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+};
+
+//Solution 2
+/*const binarySearch = (sortedArr, value) => {
   "use strict";
   if (sortedArr.length === 1) {
     if (sortedArr[0] !== value) {
@@ -36,6 +56,7 @@ const binarySearch = (sortedArr, value) => {
     return -1;
   }
 };
+*/
 
 mocha.setup("bdd");
 const { assert } = chai;
