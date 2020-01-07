@@ -58,8 +58,21 @@ function bubbleSort(arr) {
 */
 
 //selectionSort works by having sorted data accumulate at start of array
+//SELECTION SORT SOLUTION
 function selectionSort(arr) {
   "use strict";
+
+  for (let i = 0; i < arr.length; i++) {
+    let swapIndex = i;
+
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[swapIndex]) {
+        swapIndex = j;
+      }
+    }
+    swap(arr, i, swapIndex);
+  }
+  return arr;
 }
 
 mocha.setup("bdd");
@@ -79,7 +92,7 @@ describe("Bubble Sort", () => {
   });
 });
 
-describe.skip("Selection Sort", () => {
+describe("Selection Sort", () => {
   it("sorts an array", () => {
     assert.deepEqual(selectionSort([5, 1, 3, 2, 4]), [1, 2, 3, 4, 5]);
   });
