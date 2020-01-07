@@ -25,6 +25,7 @@ function swap(arr, i, j) {
 */
 
 //bubbleSort works by having sorted data accumulate at end of array
+//BUBBLESORT Solution 1
 function bubbleSort(arr) {
   "use strict";
   for (let i = 0; i < arr.length; i++) {
@@ -42,6 +43,19 @@ function bubbleSort(arr) {
   return arr;
 }
 
+//BUBBLESORT Solution 2
+/*function bubbleSort(arr) {
+  "use strict";
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+      }
+    }
+  }
+  return arr;
+}
+*/
 //selectionSort works by having sorted data accumulate at start of array
 function selectionSort(arr) {
   "use strict";
