@@ -6,9 +6,9 @@
 // merge([4,6,7], [1,5]) === [1,4,5,6,7]
 
 //MERGE Solution 1
-const swap = (arr, i, j) => {
+/*const swap = (arr, i, j) => {
   "use strict";
-  let temp = arr[i];
+  const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
   return arr;
@@ -41,7 +41,39 @@ function merge(sortedArr1, sortedArr2) {
 
   return selectionSort(mergeArray);
 }
+*/
 
+//MERGE SOLUTION 2
+function merge(sortedArr1, sortedArr2) {
+  "use strict";
+  let mergeArray = [];
+
+  for (let i = 0; i <= sortedArr1.length; i++) {
+    let array1 = sortedArr1[i];
+
+    for (let j = 0; j < sortedArr2.length; j++) {
+      let array2 = sortedArr2[j];
+
+      if (array1 < array2) {
+        //console.log("array1 " + array1 + " and array2 is " + array2);
+        mergeArray.push(array1);
+        break;
+      } else if (array2 < array1) {
+        //console.log("else if, array2 " + array2 + " array1 " + array1);
+        mergeArray.push(array2);
+      } else {
+        console.log(j);
+        console.log("here array2 " + array2);
+        mergeArray.push(array2);
+      }
+    }
+  }
+
+  return mergeArray;
+}
+console.log(merge([1, 3], [2, 4]));
+
+/*
 mocha.setup("bdd");
 const { assert } = chai;
 
@@ -68,3 +100,4 @@ describe("merge()", () => {
 });
 
 mocha.run();
+*/
