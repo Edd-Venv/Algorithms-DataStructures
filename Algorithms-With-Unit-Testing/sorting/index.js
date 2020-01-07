@@ -56,6 +56,7 @@ function bubbleSort(arr) {
   return arr;
 }
 */
+
 //selectionSort works by having sorted data accumulate at start of array
 function selectionSort(arr) {
   "use strict";
