@@ -1,4 +1,5 @@
 // Implement a swap helper function that we will use in both BS and SS
+//SWAP solution 1
 function swap(arr, i, j) {
   "use strict";
   const valueI = arr[i];
@@ -13,6 +14,15 @@ function swap(arr, i, j) {
   }
   return arr;
 }
+
+//SWAP soultion 2
+/*function swap(arr, i, j) {
+  "use strict";
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+}
+*/
 
 //bubbleSort works by having sorted data accumulate at end of array
 function bubbleSort(arr) {
@@ -33,7 +43,9 @@ function bubbleSort(arr) {
 }
 
 //selectionSort works by having sorted data accumulate at start of array
-function selectionSort(arr) {}
+function selectionSort(arr) {
+  "use strict";
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
@@ -59,43 +71,3 @@ describe.skip("Selection Sort", () => {
 });
 
 mocha.run();
-
-/*
-"use strict";
-  let i = 0;
-
-  while (i < 2) {
-    let I = arr[i];
-    let J = arr[i + 1];
-    console.log(i);
-    console.log(arr);
-
-    if (J === undefined) {
-      return arr;
-    } else if (J && I > J) {
-      swap(arr, i, i + 1);
-      i++;
-    }
-    if (i === arr.length - 1) {
-      console.log("END OF LOOP");
-    }
-  }
-  return arr;
-///////////////////////////////////////////
-"use strict";
-  for (let i = 0; i < arr.length; i++) {
-    let I = arr[i];
-    let J = arr[i + 1];
-
-    if (J === undefined) {
-      return arr;
-    } else if (J) {
-      //console.log("index i is " + i + " and index j is " + (i + 1));
-      if (I > J) {
-        swap(arr, i, i + 1);
-        console.log("in loop array " + arr);
-      }
-    }
-  }
-  return arr;
-*/
