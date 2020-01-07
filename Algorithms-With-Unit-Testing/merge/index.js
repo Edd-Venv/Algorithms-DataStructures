@@ -5,30 +5,42 @@
 // merge([1,5], [4,6,7]) === [1,4,5,6,7]
 // merge([4,6,7], [1,5]) === [1,4,5,6,7]
 
-function merge(sortedArr1, sortedArr2) {}
+//MERGE Solution 1
+const swap = (arr, i, j) => {
+  "use strict";
+  let temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+  return arr;
+};
 
-// _________ _______  _______ _________   _______  _______  _______  _______  _______
-// \__   __/(  ____ \(  ____ \\__   __/  (  ____ \(  ___  )(  ____ \(  ____ \(  ____ \
-//    ) (   | (    \/| (    \/   ) (     | (    \/| (   ) || (    \/| (    \/| (    \/
-//    | |   | (__    | (_____    | |     | |      | (___) || (_____ | (__    | (_____
-//    | |   |  __)   (_____  )   | |     | |      |  ___  |(_____  )|  __)   (_____  )
-//    | |   | (            ) |   | |     | |      | (   ) |      ) || (            ) |
-//    | |   | (____/\/\____) |   | |     | (____/\| )   ( |/\____) || (____/\/\____) |
-//    )_(   (_______/\_______)   )_(     (_______/|/     \|\_______)(_______/\_______)
-//                             ____       _
-//                             |  _ \     | |
-//                             | |_) | ___| | _____      __
-//                             |  _ < / _ \ |/ _ \ \ /\ / /
-//                             | |_) |  __/ | (_) \ V  V /
-//                             |____/ \___|_|\___/ \_/\_/
-//                         ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+const selectionSort = arr => {
+  "use strict";
+  for (let i = 0; i < arr.length; i++) {
+    let swapIdx = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[swapIdx]) {
+        swapIdx = j;
+      }
+    }
+    swap(arr, i, swapIdx);
+  }
+  return arr;
+};
 
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+function merge(sortedArr1, sortedArr2) {
+  "use strict";
+  let mergeArray = [];
 
-//                          ______ ______ ______ ______ ______
-//                         |______|______|______|______|______|
+  for (let i = 0; i < sortedArr1.length; i++) {
+    mergeArray.push(sortedArr1[i]);
+  }
+  for (let j = 0; j < sortedArr2.length; j++) {
+    mergeArray.push(sortedArr2[j]);
+  }
+
+  return selectionSort(mergeArray);
+}
 
 mocha.setup("bdd");
 const { assert } = chai;
