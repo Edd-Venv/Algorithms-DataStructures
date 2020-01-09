@@ -12,7 +12,7 @@ function merge(sortedArr1, sortedArr2) {
   let pointer2 = 0;
   let res = [];
 
-  while (pointer1 < sortedArr1 && pointer2 < sortedArr2.length) {
+  while (pointer1 < sortedArr1.length && pointer2 < sortedArr2.length) {
     if (sortedArr1[pointer1] < sortedArr2[pointer2]) {
       res.push(sortedArr1[pointer1]);
       pointer1++;
