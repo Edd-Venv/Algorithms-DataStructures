@@ -6,6 +6,35 @@
 // merge([4,6,7], [1,5]) === [1,4,5,6,7]
 
 //MERGE Solution 1
+function merge(sortedArr1, sortedArr2) {
+  "use strict";
+  let pointer1 = 0;
+  let pointer2 = 0;
+  let res = [];
+
+  while (pointer1 < sortedArr1 && pointer2 < sortedArr2.length) {
+    if (sortedArr1[pointer1] < sortedArr2[pointer2]) {
+      res.push(sortedArr1[pointer1]);
+      pointer1++;
+    } else {
+      res.push(sortedArr2[pointer2]);
+      pointer2++;
+    }
+  }
+
+  while (pointer1 < sortedArr1.length) {
+    res.push(sortedArr1[pointer1]);
+    pointer1++;
+  }
+
+  while (pointer2 < sortedArr2.length) {
+    res.push(sortedArr2[pointer2]);
+    pointer2++;
+  }
+  return res;
+}
+
+//MERGE Solution 2
 /*const swap = (arr, i, j) => {
   "use strict";
   const temp = arr[i];
@@ -43,39 +72,6 @@ function merge(sortedArr1, sortedArr2) {
 }
 */
 
-//MERGE SOLUTION TO BE CONTINUED
-/*
-function merge(sortedArr1, sortedArr2) {
-  "use strict";
-  let mergeArray = [];
-
-  for (let i = 0; i < sortedArr1.length; i++) {
-    let array1 = sortedArr1[i];
-
-    for (let j = 0; j < sortedArr2.length; j++) {
-      let array2 = sortedArr2[j];
-
-      if (array1 < array2) {
-        mergeArray.push(array1);
-        break;
-      } else if (array2 < array1) {
-        mergeArray.push(array2);
-      }
-    }
-  }
-
-  let indexToContinueFrom = mergeArray.length - sortedArr1.length;
-
-  for (let k = indexToContinueFrom; k < sortedArr2.length; k++) {
-    mergeArray.push(sortedArr2[k]);
-  }
-
-  return mergeArray;
-}
-console.log(merge([4, 6, 7], [1, 5]));
-*/
-
-/*
 mocha.setup("bdd");
 const { assert } = chai;
 
@@ -102,4 +98,3 @@ describe("merge()", () => {
 });
 
 mocha.run();
-*/
