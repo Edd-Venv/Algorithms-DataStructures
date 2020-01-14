@@ -9,19 +9,27 @@ const swap = (arr, i, j) => {
 function paritySort(arr) {
   "use strict";
   for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 == 0 && i % 2 < 0) {
+    let evenElement = arr[i] % 2 == 0;
+    let evenIndice = i % 2 == 0;
+    let oddIndice = i % 2 > 0;
+    let oddElement = arr[i] % 2 > 0;
+
+    if ((evenElement && evenIndice) || (oddElement && oddIndice)) {
+      continue;
+    } else if (evenElement && oddIndice) {
       swap(arr, i, i + 1);
-    } else if (arr[i] % 2 > 0 && i % 2 == 0) {
+    } else if (oddElement && evenIndice) {
       swap(arr, i, i + 1);
     }
   }
-
   return arr;
 }
 
 test("when sorted, even numbers and odd numbers are at even and odd indices respectively.", () => {
   let testArray = [3, 2, 5, 6];
+  let testArray2 = [4, 2, 5, 7];
   expect(paritySort(testArray)).toEqual([2, 3, 6, 5]);
+  expect(paritySort(testArray2)).toEqual([4, 5, 2, 7]);
 });
 
 test("array should contain only positive numbers", () => {
