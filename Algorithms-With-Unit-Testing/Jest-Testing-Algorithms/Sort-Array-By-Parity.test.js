@@ -25,14 +25,14 @@ function paritySort(arr) {
   return arr;
 }
 
-test("when sorted, even numbers and odd numbers are at even and odd indices respectively.", () => {
+test.skip("when sorted, even numbers and odd numbers are at even and odd indices respectively.", () => {
   let testArray = [3, 2, 5, 6];
   let testArray2 = [4, 2, 5, 7];
   expect(paritySort(testArray)).toEqual([2, 3, 6, 5]);
   expect(paritySort(testArray2)).toEqual([4, 5, 2, 7]);
 });
 
-test("array should contain only positive numbers", () => {
+test.skip("array should contain only positive numbers", () => {
   let testArray = [1, 2, 3, 4];
 
   for (let i = 0; i < testArray.length; i++) {
@@ -41,7 +41,7 @@ test("array should contain only positive numbers", () => {
   }
 });
 
-test("half of the array elements are even", () => {
+test.skip("half of the array elements are even", () => {
   let testArray = [1, 2, 3, 4, 5, 6];
   let count = 0;
 
