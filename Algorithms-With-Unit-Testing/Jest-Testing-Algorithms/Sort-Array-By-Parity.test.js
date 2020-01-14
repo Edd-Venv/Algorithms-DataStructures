@@ -24,6 +24,8 @@ function paritySort(arr) {
   }
   return arr;
 }
+//Time Complexity = O(n);
+//Space Complexity = O(n);
 
 test.skip("when sorted, even numbers and odd numbers are at even and odd indices respectively.", () => {
   let testArray = [3, 2, 5, 6];
