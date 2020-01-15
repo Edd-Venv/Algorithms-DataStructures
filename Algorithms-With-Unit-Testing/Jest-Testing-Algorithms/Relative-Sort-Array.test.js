@@ -30,7 +30,7 @@ function relativeSort(arr1, arr2) {
   return resultArray;
 }
 
-test("Sorts the relative ordering in array A to that of array B", () => {
+test.skip("Sorts the relative ordering in array A to that of array B", () => {
   const arr1 = [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19];
   const arr2 = [2, 1, 4, 3, 9, 6];
 
