@@ -26,13 +26,13 @@ function relativeSort(arr1, arr2) {
       }
     }
   }
-  console.log(hashMap[1]);
+
   return resultArray;
 }
 
 test("Sorts the relative ordering in array A to that of array B", () => {
-  let arr1 = [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19];
-  let arr2 = [2, 1, 4, 3, 9, 6];
+  const arr1 = [2, 3, 1, 3, 2, 4, 6, 7, 9, 2, 19];
+  const arr2 = [2, 1, 4, 3, 9, 6];
 
   expect(relativeSort(arr1, arr2)).toEqual([2, 2, 2, 1, 4, 3, 3, 9, 6, 7, 19]);
 });
