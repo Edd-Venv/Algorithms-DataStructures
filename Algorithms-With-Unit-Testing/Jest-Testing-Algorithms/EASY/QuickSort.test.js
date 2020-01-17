@@ -1,3 +1,8 @@
+/*
+================
+Complex Solution
+================
+
 const swap = (arr, i, j) => {
   const temp = arr[i];
   arr[i] = arr[j];
@@ -45,8 +50,36 @@ function quickSort(arr) {
   }
   return result;
 }
+*/
+
+function partitionSort(arr) {
+  "use strict";
+  const p = arr[0];
+  let result = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < p) {
+      result.unshift(arr[i]);
+    }
+  }
+  result.push(p);
+
+  for (let j = 0; j < arr.length; j++) {
+    if (arr[j] > p) {
+      result.push(arr[j]);
+    }
+  }
+  return result;
+}
 
 describe("Quick Sort(Partition Sort)", () => {
+  it("should partion an array about a pivot(centre value)", () => {
+    const arr = [5, 7, 4, 3, 8];
+    expect(partitionSort(arr)).toEqual([3, 4, 5, 7, 8]);
+  });
+});
+
+describe.skip("Quick Sort(Partition Sort)", () => {
   it("should partion an array about a pivot(centre value)", () => {
     const arr = [5, 7, 4, 3, 8];
     expect(quickSort(arr)).toEqual([3, 4, 5, 7, 8]);
