@@ -26,7 +26,7 @@ function insertionSort(arr) {
 
 insertionSort([1, 2, 4, 5, 3]);
 
-describe("Insertion Sort ", () => {
+describe.skip("Insertion Sort ", () => {
   it("should console log the array each time it fails and the final sorted array.", () => {
     expect(global.console.log).toHaveBeenCalledWith(
       "[1, 2, 4, 5, 5]",
