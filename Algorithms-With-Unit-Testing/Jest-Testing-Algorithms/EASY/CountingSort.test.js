@@ -31,7 +31,7 @@ function countingSort(arr) {
   return result;
 }
 
-describe("Alternative Sort(Counting Sort)", () => {
+describe.skip("Alternative Sort(Counting Sort)", () => {
   it("should return a list of occurrences", () => {
     const arr = [1, 1, 3, 2, 1];
     expect(countingSort(arr)).toEqual([0, 3, 1, 1]);
