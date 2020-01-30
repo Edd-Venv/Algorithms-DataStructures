@@ -26,7 +26,7 @@ class LinkedList {
   getLast() {
     let currentNode = this.head;
 
-    while (current && currentNode.next) {
+    while (currentNode && currentNode.next) {
       currentNode = currentNode.next;
     }
 
@@ -66,6 +66,43 @@ class LinkedList {
     this.length--;
     return last;
   }
+
+  push(data) {
+    if (!this.head) {
+      return this.unshift(data);
+    }
+
+    const last = this.getLast();
+    last.next = new Node(data, null);
+    this.length++;
+  }
+
+  get(index) {
+    if (index >= this.length || index < 0) {
+      return null;
+    }
+
+    let counter = 0;
+    let current = this.head;
+
+    while (counter < index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+
+  set(index, data) {
+    if (!this.get(index)) {
+      return false;
+    }
+
+    const node = this.get(index);
+    node.data = data;
+    return true;
+  }
+
+  remove() {}
 }
 
 mocha.setup("bdd");
