@@ -6,9 +6,10 @@ class List {
     this.listSize = 0;
     this.pos = 0;
     this.length = length;
-    //this.clear = this.clear;
-    //this.append = append;
-    /*this.clear = clear;
+    this.clear;
+    this.append;
+    this.toString;
+    /*
     this.find = find;
     this.toString = toString;
     this.insert = insert;
@@ -24,8 +25,11 @@ class List {
     this.contains = contains;*/
   }
   clear() {
+    if (this.dataStore === []) {
+      return true;
+    }
     this.dataStore = [];
-    this.length = 0;
+    this.length = this.pos = this.listSize = 0;
     return true;
   }
 
@@ -33,6 +37,15 @@ class List {
     this.dataStore[this.length++] = data;
     return true;
   }
+
+  toString() {
+    if (this.length === 0) {
+      return;
+    }
+    return this.dataStore;
+  }
+
+  getElement() {}
 }
 
 describe("List Data Structure", () => {
@@ -53,5 +66,20 @@ describe("List Data Structure", () => {
 
     expect(ListDS.length).toBe(0);
     expect(ListDS.dataStore).toEqual([]);
+    expect(ListDS.clear()).toBe(true);
   });
+
+  it("ToSTRING Should return a string representation of the List", () => {
+    const ListDS = new List();
+    ListDS.append("Hey");
+    ListDS.append("We on");
+
+    const listString = ListDS.toString();
+    expect(listString).toEqual([
+      expect.stringMatching("Hey"),
+      expect.stringMatching("We on")
+    ]);
+  });
+
+  it("");
 });
