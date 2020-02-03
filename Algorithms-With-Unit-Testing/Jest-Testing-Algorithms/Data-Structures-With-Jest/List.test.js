@@ -45,7 +45,23 @@ class List {
     return this.dataStore;
   }
 
-  getElement() {}
+  find(value) {
+    for (let i = 0; i < this.length; i++) {
+      if (this.dataStore[i] === value) {
+        return i;
+      }
+    }
+    return null;
+  }
+
+  //TRAVSING THE LIST
+
+  getElement(index) {
+    if (index < 0 || index > this.length) {
+      return;
+    }
+    return this.dataStore[index];
+  }
 }
 
 describe("List Data Structure", () => {
@@ -81,5 +97,21 @@ describe("List Data Structure", () => {
     ]);
   });
 
-  it("");
+  it("GetELEMENT Should Return The Value At The Current Index", () => {
+    const ListDS = new List();
+    ListDS.append(2);
+    ListDS.append(9);
+
+    const element = ListDS.getElement(1);
+    expect(element).toBe(9);
+  });
+
+  it("FIND Should Return The Index Of The Value If Present", () => {
+    const ListDS = new List();
+    ListDS.append(22);
+    ListDS.append(33);
+
+    expect(ListDS.find(22)).toBe(0);
+    expect(ListDS.find(33)).toBe(1);
+  });
 });
