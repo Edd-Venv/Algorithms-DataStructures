@@ -54,6 +54,13 @@ class List {
     return null;
   }
 
+  remove(value) {
+    const index = this.find(value);
+    this.dataStore.splice(index, 1);
+    this.length--;
+    return true;
+  }
+
   //TRAVSING THE LIST
 
   getElement(index) {
@@ -113,5 +120,15 @@ describe("List Data Structure", () => {
 
     expect(ListDS.find(22)).toBe(0);
     expect(ListDS.find(33)).toBe(1);
+  });
+
+  it("REMOVE Should Delete A Value From The Array", () => {
+    const ListDs = new List();
+    ListDs.append(1);
+    ListDs.append(2);
+    ListDs.append(3);
+
+    ListDs.remove(2);
+    expect(ListDs.dataStore).toEqual([1, 3]);
   });
 });
