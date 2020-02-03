@@ -64,6 +64,27 @@ class List {
     return false;
   }
 
+  insert(prevElement, addedElement) {
+    const toAppendArray = new List();
+    const prevElementIdx = this.find(prevElement);
+
+    if (prevElementIdx) {
+      for (let i = prevElementIdx + 1; i < this.length; i++) {
+        toAppendArray.append(this.dataStore[i]);
+      }
+
+      this.dataStore[prevElementIdx + 1] = addedElement;
+
+      for (let j = 0; j < toAppendArray.length; j++) {
+        this.dataStore[prevElementIdx + 2 + j] = 0;
+        this.dataStore[prevElementIdx + 2 + j] = toAppendArray.dataStore[j];
+      }
+
+      this.length++;
+      return this.dataStore;
+    }
+  }
+
   //TRAVSING THE LIST
 
   getElement(index) {
@@ -133,5 +154,16 @@ describe("List Data Structure", () => {
 
     ListDs.remove(2);
     expect(ListDs.dataStore).toEqual([1, 3]);
+  });
+
+  it("INSERT Should Insert A Value", () => {
+    const ListDS = new List();
+    ListDS.append(4);
+    ListDS.append(5);
+    ListDS.append(6);
+    ListDS.append(9);
+
+    ListDS.insert(5, 8);
+    expect(ListDS.dataStore).toEqual([4, 5, 8, 6, 9]);
   });
 });
