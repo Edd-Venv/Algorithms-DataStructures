@@ -56,9 +56,12 @@ class List {
 
   remove(value) {
     const index = this.find(value);
-    this.dataStore.splice(index, 1);
-    this.length--;
-    return true;
+    if (index > -1) {
+      this.dataStore.splice(index, 1);
+      this.length--;
+      return true;
+    }
+    return false;
   }
 
   //TRAVSING THE LIST
