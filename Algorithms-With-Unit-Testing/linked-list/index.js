@@ -118,7 +118,21 @@ class LinkedList {
     return nodeToRemove;
   }
 
-  insert()
+  insert(index, data) {
+    if (index > this.length || index < 0) {
+      return false;
+    }
+    if (index === 0) {
+      this.unshift(data);
+      return true;
+    }
+    const prevNode = this.get(index - 1);
+    const nextNode = this.get(index);
+
+    prevNode.next = new Node(data, nextNode);
+    this.length++;
+    return true;
+  }
 }
 
 mocha.setup("bdd");
