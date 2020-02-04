@@ -9,21 +9,15 @@ class List {
     this.clear;
     this.append;
     this.toString;
-    /*
-    this.find = find;
-    this.toString = toString;
-    this.insert = insert;
-    this.remove = remove;
-    this.front = front;
-    this.end = end;
-    this.prev = prev;
-    this.next = next;
-    this.length = length;
-    this.currPos = currPos;
-    this.moveTo = moveTo;
-    this.getElment = getElment;
-    this.contains = contains;*/
+    this.end;
+    this.prev;
+    this.next;
+    this.currPos;
+    this.moveTo;
+    this.getElment;
+    this.contains;
   }
+
   clear() {
     if (this.dataStore === []) {
       return true;
@@ -64,7 +58,12 @@ class List {
     return false;
   }
 
+  newIndex(index) {
+    this.dataStore[index] = 0;
+  }
+
   insert(prevElement, addedElement) {
+    //You can also use splice()
     const toAppendArray = new List();
     const prevElementIdx = this.find(prevElement);
 
@@ -76,13 +75,22 @@ class List {
       this.dataStore[prevElementIdx + 1] = addedElement;
 
       for (let j = 0; j < toAppendArray.length; j++) {
-        this.dataStore[prevElementIdx + 2 + j] = 0;
+        this.newIndex(prevElementIdx + 2 + j);
         this.dataStore[prevElementIdx + 2 + j] = toAppendArray.dataStore[j];
       }
 
       this.length++;
       return this.dataStore;
     }
+  }
+
+  contains(element) {
+    for (let i = 0; i < this.dataStore.length; ++i) {
+      if (this.dataStore[i] === element) {
+        return true;
+      }
+    }
+    return false;
   }
 
   //TRAVSING THE LIST
@@ -92,6 +100,33 @@ class List {
       return;
     }
     return this.dataStore[index];
+  }
+  front() {
+    this.pos = 0;
+  }
+
+  end() {
+    this.pos = this.length - 1;
+  }
+
+  prev() {
+    if (this.pos > 0) {
+      this.pos--;
+    }
+  }
+
+  next() {
+    if (this.pos < this.length - 1) {
+      ++this.pos;
+    }
+  }
+
+  currPos() {
+    return this.pos;
+  }
+
+  moveTo(position) {
+    this.pos = position;
   }
 }
 
