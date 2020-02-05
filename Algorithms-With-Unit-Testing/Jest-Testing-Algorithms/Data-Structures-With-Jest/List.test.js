@@ -130,7 +130,7 @@ class List {
   }
 }
 
-describe("List Data Structure", () => {
+describe.skip("List Data Structure", () => {
   it("APPEND Should Add An Element To The DataStore", () => {
     const ListDS = new List();
     ListDS.append(5);
