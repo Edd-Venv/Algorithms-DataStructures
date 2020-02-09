@@ -50,7 +50,7 @@ class Stack {
   }
 }
 
-describe("Stack Data Structure", () => {
+describe.skip("Stack Data Structure", () => {
   it("PUSH It Should Add A Value To The Top Of The Stack", () => {
     const StackDS = new Stack();
     StackDS.push(4);
@@ -133,14 +133,29 @@ describe.skip("STACK IMPLEMENTATION PALINDROME", () => {
   });
 });
 
-//                                      IMPLEMENTATION 2
+//                                      IMPLEMENTATION 2 RECURSION
 
-function fact(n) {}
+function fact(n) {
+  const newStack = new Stack();
+  let result = 1;
 
-describe("STACK IMPLEMENTATION FACTORIAL", () => {
+  if (n === 0) {
+    return 1;
+  }
+
+  for (let i = 0; i < n; i++) {
+    newStack.push(n - i);
+  }
+
+  for (let j = 0; j < n; j++) {
+    result *= newStack.pop();
+  }
+
+  return result;
+}
+
+describe.skip("STACK IMPLEMENTATION FACTORIAL", () => {
   it("Should Return The Factorial", () => {
-    const StackDS = new Stack();
-
     expect(fact(5)).toBe(120);
   });
 });
