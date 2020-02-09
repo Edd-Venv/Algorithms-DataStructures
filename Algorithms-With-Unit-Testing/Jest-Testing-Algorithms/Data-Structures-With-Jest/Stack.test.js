@@ -98,7 +98,7 @@ describe.skip("Stack Data Structure", () => {
   });
 });
 
-//                                      IMPLEMENTATION 1
+//                                              IMPLEMENTATION 1
 function reverse(word) {
   word = word.toLowerCase();
   const stack = new Stack();
@@ -157,5 +157,46 @@ function fact(n) {
 describe.skip("STACK IMPLEMENTATION FACTORIAL", () => {
   it("Should Return The Factorial", () => {
     expect(fact(5)).toBe(120);
+  });
+});
+
+//                                        IMPLEMENTATION 3
+
+function check(exp) {
+  const newStack = new Stack();
+  let firstParentheses = 0;
+  let secondParentheses = 0;
+
+  for (let i = 0; i < exp.length; i++) {
+    newStack.push(exp[i]);
+  }
+
+  for (let j = 0; j < exp.length; j++) {
+    let parentheses = newStack.pop();
+
+    if (parentheses === "(") {
+      firstParentheses++;
+    }
+    if (parentheses === ")") {
+      secondParentheses++;
+    }
+  }
+
+  if (firstParentheses === secondParentheses) {
+    return true;
+  }
+
+  return false;
+}
+
+describe.skip("STACK IMPLEMENTATION ARITHMETIC EXPRESSION CHECK", () => {
+  it("Should Check If An Arithmetic Expression Has Balanced Parentheses", () => {
+    const arithmeticExp = "2.3 + 23 / 12 + (3.14159 * .24";
+    expect(check(arithmeticExp)).toBeFalsy();
+  });
+
+  it("Should Check If An Arithmetic Expression Has Balanced Parentheses", () => {
+    const arithmeticExp = "2.3 + 23 / 12 + (3.14159 * .24)";
+    expect(check(arithmeticExp)).toBeTruthy();
   });
 });
