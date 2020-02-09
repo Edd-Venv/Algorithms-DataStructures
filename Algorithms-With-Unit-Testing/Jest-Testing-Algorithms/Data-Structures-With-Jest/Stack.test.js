@@ -16,7 +16,7 @@ class Stack {
     this.dataStore[this.top++] = value;
   }
 
-  shift() {
+  popExtended() {
     if (this.top >= 0) {
       return this.dataStore[--this.top];
     }
@@ -30,10 +30,10 @@ class Stack {
   }
 
   pop() {
-    if (this.top < 2) {
-      console.log("here");
-      return this.shift();
+    if (this.top < 2 && this.top > 0) {
+      return this.popExtended();
     }
+
     if (this.top > 1) {
       const poppedValue = this.dataStore[this.top - 1];
       const newStack = new Stack();
@@ -60,13 +60,13 @@ describe("Stack Data Structure", () => {
     expect(StackDS.dataStore).toEqual([4, 5, 6]);
   });
 
-  it("SHIFT", () => {
+  it("PopExtended Should Extend The Pop Method", () => {
     const StackDS = new Stack();
     StackDS.push(1);
     StackDS.push(2);
-    StackDS.push(3);
+    StackDS.push(5);
 
-    expect(StackDS.shift()).toBe(3);
+    expect(StackDS.popExtended()).toBe(5);
   });
 
   it("PEEK It Should Return The Value At The Top Of The Stack", () => {
@@ -89,35 +89,58 @@ describe("Stack Data Structure", () => {
     expect(StackDS.dataStore).toEqual([7, 8, 9]);
   });
 
-  it.skip("Should Return Null If The Length Is 1", () => {
+  it("Should Return Value Using Shift If The Length Is 1", () => {
     const StackDS = new Stack();
     StackDS.push(11);
-    StackDS.pop();
+
+    expect(StackDS.pop()).toBe(11);
     expect(StackDS.dataStore).toEqual([11]);
-    //expect(StackDS.pop()).toBeNull();
   });
 });
 
-// IMPLEMENTATION
+//                                      IMPLEMENTATION 1
 function reverse(word) {
-  let reverseStr = "";
+  word = word.toLowerCase();
   const stack = new Stack();
+  let reverseStr = "";
 
   for (let i = 0; i < word.length; i++) {
     stack.push(word[i]);
   }
-  for (let j = 0; j <= stack.top; j++) {
+
+  for (let j = 0; j < word.length; j++) {
     reverseStr += stack.pop();
   }
+
   if (word === reverseStr) {
     return true;
   }
-  console.log(reverseStr);
+
   return false;
 }
 
-describe("STACK IMPLEMENTATION", () => {
+describe.skip("STACK IMPLEMENTATION PALINDROME", () => {
   it("Should Return True If Word Is A Palindrome.", () => {
     expect(reverse("racecar")).toBeTruthy();
+  });
+
+  it("Should Return True If Word Is A Palindrome.", () => {
+    expect(reverse("1001")).toBeTruthy();
+  });
+
+  it("Should Return True If Word Is A Palindrome.", () => {
+    expect(reverse("hello")).toBeFalsy();
+  });
+});
+
+//                                      IMPLEMENTATION 2
+
+function fact(n) {}
+
+describe("STACK IMPLEMENTATION FACTORIAL", () => {
+  it("Should Return The Factorial", () => {
+    const StackDS = new Stack();
+
+    expect(fact(5)).toBe(120);
   });
 });
