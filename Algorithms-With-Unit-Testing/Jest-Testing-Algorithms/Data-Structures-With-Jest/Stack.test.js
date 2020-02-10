@@ -200,3 +200,14 @@ describe.skip("STACK IMPLEMENTATION ARITHMETIC EXPRESSION CHECK", () => {
     expect(check(arithmeticExp)).toBeTruthy();
   });
 });
+
+//                                         IMPLEMENTATION 4
+
+function infixConversion() {}
+
+describe("INFIX TO POSTFIX CONVERSION", () => {
+  it("Should Convert An Infix Exp To A PostFix Exp", () => {
+    expect(infixConversion("D = A + B * C")).toMatch("D A B C * + =");
+    expect(infixConversion("(A + B) * (C - D )")).toMatch("A B + C D - *");
+  });
+});
