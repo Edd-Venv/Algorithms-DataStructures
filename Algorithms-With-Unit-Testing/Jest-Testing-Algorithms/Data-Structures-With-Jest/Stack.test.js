@@ -202,6 +202,7 @@ const precedence = (operator, stackOperator) => {
     hashMap["*"] = 3;
     hashMap["+"] = 2;
     hashMap["-"] = 1;
+    hashMap["="] = 0;
   }
 
   if (hashMap[operator] <= hashMap[stackOperator]) {
@@ -210,11 +211,92 @@ const precedence = (operator, stackOperator) => {
   return false;
 };
 
-function infixConversion() {}
+const swap = (arr, i, j) => {
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+};
+
+function infixConversion(str) {
+  const operatorStack = new Stack();
+  const oparandStack = new Stack();
+  let postFix = "";
+  str = trim(str);
+
+  for (let i = 0; i < str.length; i++) {
+    if (!isNaN(parseInt(str[i], 10))) {
+      oparandStack.push(str[i]);
+    } else if (isNaN(parseInt(str[i], 10))) {
+      operatorStack.push(str[i]);
+    }
+  }
+
+  const operatorStackCopy = operatorStack.dataStore;
+  operatorStack.dataStore = [];
+
+  for (let j = 0; j < operatorStackCopy.length; j++) {
+    for (let k = j + 1; k < operatorStackCopy.length; k++) {
+      if (precedence(operatorStackCopy[j], operatorStackCopy[k])) {
+        swap(operatorStackCopy, j, k);
+      }
+    }
+  }
+  operatorStack.dataStore = operatorStackCopy;
+  return postFix;
+}
 
 describe("INFIX TO POSTFIX CONVERSION", () => {
   it("Should Convert An Infix Exp To A PostFix Exp", () => {
-    expect(infixConversion("D = A + B * C")).toMatch("D A B C * + =");
-    expect(infixConversion("(A + B) * (C - D )")).toMatch("A B + C D - *");
+    expect(infixConversion("7 = 1 + 3 * 2")).toMatch("7132*+=");
+    //expect(infixConversion("(A + B) * (C - D )")).toMatch("A B + C D - *");
   });
 });
+/*
+
+ for (let j = 0; j < newStack.top; j++) {
+          if (precedence(str[i], newStack[j])) {
+            postFix += newStack.pop();
+          }
+        }
+
+const newStack = new Stack();
+  console.log(str);
+  //str = trim(str);
+  let postFix = "";
+
+  for (let i = 0; i < str.length; i++) {
+    /*if (
+      (str[i] !== "+") |
+      (str[i] !== "-") |
+      (str[i] !== "*") |
+      (str[i] !== "/")
+    ) {
+      console.log(typeof 5);
+      newStack.push(str[i]);
+    } else 
+    if ((str[i] == "+") | (str[i] == "-") | (str[i] == "*") | (str[i] == "/")) {
+      console.log(typeof str[i]);
+      for (let j = 0; j < newStack.top; j++) {
+        if (precedence(str[i], newStack[j])) {
+          postFix += newStack.pop();
+        }
+      }
+      newStack.push(str[i]);
+    } else if (str[i] === "(") {
+      newStack.push(str[i]);
+    } else if (str[i] === ")") {
+      let j = 0;
+      while (newStack[j] !== "(") {
+        postFix += newStack.pop();
+        j++;
+      }
+      newStack.pop();
+    } else {
+      postFix += newStack[i];
+    }
+  }
+  console.log(newStack);
+  return postFix;
+
+
+*/
