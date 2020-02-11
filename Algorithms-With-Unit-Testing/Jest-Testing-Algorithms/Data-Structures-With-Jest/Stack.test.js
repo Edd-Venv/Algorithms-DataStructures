@@ -16,12 +16,6 @@ class Stack {
     this.dataStore[this.top++] = value;
   }
 
-  popExtended() {
-    if (this.top >= 0) {
-      return this.dataStore[--this.top];
-    }
-  }
-
   peek() {
     if (this.top === 0) {
       return;
@@ -30,11 +24,7 @@ class Stack {
   }
 
   pop() {
-    if (this.top < 2 && this.top > 0) {
-      return this.popExtended();
-    }
-
-    if (this.top > 1) {
+    if (this.top >= 0) {
       const poppedValue = this.dataStore[this.top - 1];
       const newStack = new Stack();
 
@@ -60,15 +50,6 @@ describe.skip("Stack Data Structure", () => {
     expect(StackDS.dataStore).toEqual([4, 5, 6]);
   });
 
-  it("PopExtended Should Extend The Pop Method", () => {
-    const StackDS = new Stack();
-    StackDS.push(1);
-    StackDS.push(2);
-    StackDS.push(5);
-
-    expect(StackDS.popExtended()).toBe(5);
-  });
-
   it("PEEK It Should Return The Value At The Top Of The Stack", () => {
     const StackDS = new Stack();
     StackDS.push(1);
@@ -89,12 +70,12 @@ describe.skip("Stack Data Structure", () => {
     expect(StackDS.dataStore).toEqual([7, 8, 9]);
   });
 
-  it("Should Return Value Using Shift If The Length Is 1", () => {
+  it("Should Return Empty [] If The Length Is 1", () => {
     const StackDS = new Stack();
     StackDS.push(11);
 
     expect(StackDS.pop()).toBe(11);
-    expect(StackDS.dataStore).toEqual([11]);
+    expect(StackDS.dataStore).toEqual([]);
   });
 });
 
@@ -202,6 +183,32 @@ describe.skip("STACK IMPLEMENTATION ARITHMETIC EXPRESSION CHECK", () => {
 });
 
 //                                         IMPLEMENTATION 4
+
+const trim = String => {
+  let result = "";
+  for (let i = 0; i < String.length; i++) {
+    if (String[i] !== " ") {
+      result += String[i];
+    }
+  }
+  return result;
+};
+
+const precedence = (operator, stackOperator) => {
+  let hashMap = {};
+
+  for (let i = 0; i < 1; i++) {
+    hashMap["/"] = 4;
+    hashMap["*"] = 3;
+    hashMap["+"] = 2;
+    hashMap["-"] = 1;
+  }
+
+  if (hashMap[operator] <= hashMap[stackOperator]) {
+    return true;
+  }
+  return false;
+};
 
 function infixConversion() {}
 
