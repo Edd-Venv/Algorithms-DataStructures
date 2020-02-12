@@ -184,6 +184,48 @@ describe.skip("STACK IMPLEMENTATION ARITHMETIC EXPRESSION CHECK", () => {
 
 //                                         IMPLEMENTATION 4
 
+const dispenserStack = (firstColor, secondColor, thirdColor, fourthColor) => {
+  const newStack = new Stack();
+  newStack.push(firstColor.toLowerCase());
+  newStack.push(secondColor.toLowerCase());
+  newStack.push(thirdColor.toLowerCase());
+  newStack.push(fourthColor.toLowerCase());
+  return newStack;
+};
+
+function dispenser(dispenserStack, color) {
+  const length = dispenserStack.top;
+  const finalStack = dispenserStack;
+  const resultStack = new Stack();
+
+  for (let i = 0; i < length; i++) {
+    if (finalStack.dataStore[i] !== color) {
+      resultStack.push(finalStack.dataStore[i]);
+    }
+  }
+
+  return resultStack.dataStore;
+}
+
+describe.skip("DISPENSER IMPLEMENTATION", () => {
+  it("Should Return The Dispenser Without The Choosen Color", () => {
+    const dispenserStac = dispenserStack("green", "BlUe", "yellow", "Red");
+
+    expect(dispenser(dispenserStac, "yellow")).toEqual([
+      "green",
+      "blue",
+      "red"
+    ]);
+  });
+  it("Should Return The Dispenser Without The Choosen Color Repeated", () => {
+    const dispenserStac = dispenserStack("yellow", "BlUe", "yellow", "Red");
+
+    expect(dispenser(dispenserStac, "yellow")).toEqual(["blue", "red"]);
+  });
+});
+
+//                                         IMPLEMENTATION 5(TO BE CONTINUED)
+
 const trim = String => {
   let result = "";
   for (let i = 0; i < String.length; i++) {
@@ -242,61 +284,21 @@ function infixConversion(str) {
     }
   }
   operatorStack.dataStore = operatorStackCopy;
+  const operatorStackLength = operatorStack.top;
+  const oparandStackLength = oparandStack.top;
+
+  for (let l = 0; l < oparandStackLength; l++) {
+    postFix += oparandStack.pop();
+  }
+  for (let h = 0; h < operatorStackLength; h++) {
+    postFix += operatorStack.pop();
+  }
   return postFix;
 }
 
-describe("INFIX TO POSTFIX CONVERSION", () => {
+describe.skip("INFIX TO POSTFIX CONVERSION", () => {
   it("Should Convert An Infix Exp To A PostFix Exp", () => {
     expect(infixConversion("7 = 1 + 3 * 2")).toMatch("7132*+=");
-    //expect(infixConversion("(A + B) * (C - D )")).toMatch("A B + C D - *");
+    expect(infixConversion("(A + B) * (C - D )")).toMatch("A B + C D - *");
   });
 });
-/*
-
- for (let j = 0; j < newStack.top; j++) {
-          if (precedence(str[i], newStack[j])) {
-            postFix += newStack.pop();
-          }
-        }
-
-const newStack = new Stack();
-  console.log(str);
-  //str = trim(str);
-  let postFix = "";
-
-  for (let i = 0; i < str.length; i++) {
-    /*if (
-      (str[i] !== "+") |
-      (str[i] !== "-") |
-      (str[i] !== "*") |
-      (str[i] !== "/")
-    ) {
-      console.log(typeof 5);
-      newStack.push(str[i]);
-    } else 
-    if ((str[i] == "+") | (str[i] == "-") | (str[i] == "*") | (str[i] == "/")) {
-      console.log(typeof str[i]);
-      for (let j = 0; j < newStack.top; j++) {
-        if (precedence(str[i], newStack[j])) {
-          postFix += newStack.pop();
-        }
-      }
-      newStack.push(str[i]);
-    } else if (str[i] === "(") {
-      newStack.push(str[i]);
-    } else if (str[i] === ")") {
-      let j = 0;
-      while (newStack[j] !== "(") {
-        postFix += newStack.pop();
-        j++;
-      }
-      newStack.pop();
-    } else {
-      postFix += newStack[i];
-    }
-  }
-  console.log(newStack);
-  return postFix;
-
-
-*/
