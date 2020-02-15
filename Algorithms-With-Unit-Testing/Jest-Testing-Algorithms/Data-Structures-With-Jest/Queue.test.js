@@ -16,8 +16,7 @@ class Queue {
   }
 
   dequeue() {
-    this.dataStore.shift();
-    return true;
+    return this.dataStore.shift();
   }
 
   front() {
@@ -54,7 +53,8 @@ describe("QUEUE", () => {
     const queue = new Queue();
     queue.enqueue(1);
     queue.enqueue(2);
-    queue.dequeue();
+
+    expect(queue.dequeue()).toBe(1);
     expect(queue.dataStore).toEqual([2]);
   });
   it("Should Return A List Of The DataStore", () => {
@@ -65,37 +65,59 @@ describe("QUEUE", () => {
     expect(queue.toString()).toMatch("\n3\n4\n5");
   });
 });
+
 //                                       IMPLEMENTATION 1
-
-class dancerObject {
-  constructor() {
-    this.dataStore = {};
-    this.length = length;
+const joinNames = (maleDancer, femaleDancer) => {
+  if (maleDancer && femaleDancer) {
+    const joinedNames = `${maleDancer} And ${femaleDancer}`;
+    return joinedNames;
   }
-  add(sex, name) {
-    this.dataStore[name] = sex;
-    this.length++;
+};
+const trimGender = name => {
+  let fullName = "";
+  for (let i = 2; i < name.length; i++) {
+    fullName += name[i];
   }
-  length() {
-    return this.dataStore.length;
-  }
-}
-
-const tester = new dancerObject();
-tester.add("m", "frank");
-tester.add("m", "luke");
-tester.add("f", "frank");
-tester.add("f", "luke");
-console.log(tester.dataStore["frank"]);
-/*const dancer = (name, sex) => {
-  name = name.toLowerCase();
-  sex = sex.toLowerCase();
-
-  const dancerObj = new dancerObject();
-  dancerObj.add(name, sex);
-
-  return dancerObj.dataStore;
+  return fullName;
 };
 
-console.log(dancer("luke", "M"));
-*/
+function pairs(arr) {
+  const maleDancers = new Queue();
+  const femaleDancers = new Queue();
+  const dancers = new Queue();
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i][0] === "M") {
+      maleDancers.enqueue(trimGender(arr[i]));
+    } else if (arr[i][0] === "F") {
+      femaleDancers.enqueue(trimGender(arr[i]));
+    }
+  }
+
+  while (!maleDancers.empty() | !femaleDancers.empty()) {
+    dancers.enqueue(joinNames(maleDancers.dequeue(), femaleDancers.dequeue()));
+  }
+  console.log(maleDancers);
+  console.log(femaleDancers);
+  console.log(dancers);
+  return dancers.toString();
+}
+
+describe("DANCER QUEUE", () => {
+  it("Should Return A List Of Paired Male And Female Dancers", () => {
+    const dancersArr = [
+      "F Allison McMillan",
+      "M Frank Opitz",
+      "M Mason McMillan",
+      "M Clayton Ruff",
+      "F Cheryl Ferenback",
+      "M Raymond Williams",
+      "F Jennifer Ingram",
+      "M Danny Martin",
+      "F Aurora Adney"
+    ];
+    expect(pairs(dancersArr)).toMatch(
+      "\nFrank Opitz And Allison McMillan\nMason McMillan And Cheryl Ferenback\nClayton Ruff And Jennifer Ingram\nRaymond Williams And Aurora Adney"
+    );
+  });
+});
