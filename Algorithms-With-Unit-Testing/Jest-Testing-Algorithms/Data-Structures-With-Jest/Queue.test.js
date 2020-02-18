@@ -94,12 +94,17 @@ function pairs(arr) {
     }
   }
 
-  while (!maleDancers.empty() | !femaleDancers.empty()) {
+  let queueWithLessDancers;
+  if (femaleDancers.length <= maleDancers.length) {
+    queueWithLessDancers = femaleDancers;
+  } else {
+    queueWithLessDancers = maleDancers;
+  }
+
+  while (!queueWithLessDancers.empty()) {
     dancers.enqueue(joinNames(maleDancers.dequeue(), femaleDancers.dequeue()));
   }
-  console.log(maleDancers);
-  console.log(femaleDancers);
-  console.log(dancers);
+
   return dancers.toString();
 }
 
