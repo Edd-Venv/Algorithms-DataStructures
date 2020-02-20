@@ -149,6 +149,16 @@ describe.skip("DANCER QUEUE", () => {
 
 //                                                  IMPLEMENTATION 2(Radix Sort)
 
+function radixSort(arr) {
+  const bin = {};
+  const queue = new Queue();
+  for (let i = 0; i < 10; i++) {
+    bin[i] = queue.dataStore;
+  }
+
+  console.log(bin);
+}
+
 describe("RADIX SORT", () => {
   it("Should First Sort The 1s Then 10s Of The Array", () => {
     const arr = [91, 46, 85, 15, 92, 35, 31, 22];
