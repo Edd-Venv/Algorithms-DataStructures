@@ -41,6 +41,9 @@ class Queue {
     }
     return false;
   }
+  length() {
+    return this.dataStore.length;
+  }
 }
 
 describe("QUEUE", () => {
@@ -66,7 +69,7 @@ describe("QUEUE", () => {
   });
 });
 
-//                                       IMPLEMENTATION 1
+//                                                  IMPLEMENTATION 1
 const joinNames = (maleDancer, femaleDancer) => {
   if (maleDancer && femaleDancer) {
     const joinedNames = `${maleDancer} And ${femaleDancer}`;
@@ -94,21 +97,38 @@ function pairs(arr) {
     }
   }
 
+  let remainingDancers;
   let queueWithLessDancers;
   if (femaleDancers.length <= maleDancers.length) {
     queueWithLessDancers = femaleDancers;
+    remainingDancers = maleDancers;
   } else {
     queueWithLessDancers = maleDancers;
+    remainingDancers = femaleDancers;
   }
 
   while (!queueWithLessDancers.empty()) {
     dancers.enqueue(joinNames(maleDancers.dequeue(), femaleDancers.dequeue()));
   }
 
+  console.log(dancers.toString());
+
+  if (!remainingDancers.empty()) {
+    if (remainingDancers === maleDancers) {
+      const remainingMaleDancers = remainingDancers.length();
+      console.log(`The are ${remainingMaleDancers} Male Dancers Remaining!`);
+    } else if (remainingDancers === femaleDancers) {
+      const remainingFemaleDancers = remainingDancers.length();
+      console.log(
+        `The are ${remainingFemaleDancers} Female Dancers Remaining!`
+      );
+    }
+  }
+
   return dancers.toString();
 }
 
-describe("DANCER QUEUE", () => {
+describe.skip("DANCER QUEUE", () => {
   it("Should Return A List Of Paired Male And Female Dancers", () => {
     const dancersArr = [
       "F Allison McMillan",
@@ -124,5 +144,15 @@ describe("DANCER QUEUE", () => {
     expect(pairs(dancersArr)).toMatch(
       "\nFrank Opitz And Allison McMillan\nMason McMillan And Cheryl Ferenback\nClayton Ruff And Jennifer Ingram\nRaymond Williams And Aurora Adney"
     );
+  });
+});
+
+//                                                  IMPLEMENTATION 2(Radix Sort)
+
+describe("RADIX SORT", () => {
+  it("Should First Sort The 1s Then 10s Of The Array", () => {
+    const arr = [91, 46, 85, 15, 92, 35, 31, 22];
+
+    expect(radixSort(arr)).toEqual([15, 22, 31, 35, 46, 85, 91, 92]);
   });
 });
