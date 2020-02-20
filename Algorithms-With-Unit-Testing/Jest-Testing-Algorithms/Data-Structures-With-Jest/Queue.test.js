@@ -149,14 +149,41 @@ describe.skip("DANCER QUEUE", () => {
 
 //                                                  IMPLEMENTATION 2(Radix Sort)
 
+const toStringArr = arr => {
+  let stringArr = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let stringNum = "";
+    stringNum += arr[i];
+    stringArr.push(stringNum);
+    stringNum = "";
+  }
+  return stringArr;
+};
+
 function radixSort(arr) {
+  arr = toStringArr(arr);
   const bin = {};
-  const queue = new Queue();
+  const enqueueArr = new Queue();
+  const dequeueArr = new Queue();
+
   for (let i = 0; i < 10; i++) {
-    bin[i] = queue.dataStore;
+    bin[i] = [];
   }
 
+  for (let j = 0; j < arr.length; j++) {
+    bin[arr[j][1]].push(arr[j]);
+  }
+
+  for (let k = 0; k < arr.length; k++) {
+    if (bin[k] !== []) {
+      // write a helper function that unpacks the arrays and returns the value/s.
+      enqueueArr.enqueue(bin[k]);
+      //console.log(bin[k]);
+    }
+  }
   console.log(bin);
+  console.log(enqueueArr);
 }
 
 describe("RADIX SORT", () => {
