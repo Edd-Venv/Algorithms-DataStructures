@@ -165,8 +165,9 @@ function radixSort(arr) {
   arr = toStringArr(arr);
   const bin = {};
   const enqueueArr = new Queue();
-  const dequeueArr = new Queue();
+  const finalArr = new Queue();
 
+  // Sorting The Ones
   for (let i = 0; i < 10; i++) {
     bin[i] = [];
   }
@@ -176,20 +177,40 @@ function radixSort(arr) {
   }
 
   for (let k = 0; k < arr.length; k++) {
-    if (bin[k] !== []) {
-      // write a helper function that unpacks the arrays and returns the value/s.
-      enqueueArr.enqueue(bin[k]);
-      //console.log(bin[k]);
+    if (bin[k].length > 0) {
+      for (let l = 0; l < bin[k].length; l++) {
+        enqueueArr.enqueue(bin[k][l]);
+      }
     }
   }
-  console.log(bin);
-  console.log(enqueueArr);
+
+  //Sorting the Tens
+
+  for (let i = 0; i < 10; i++) {
+    bin[i] = [];
+  }
+
+  for (let j = 0; j < enqueueArr.length(); j++) {
+    bin[enqueueArr.dataStore[j][0]].push(enqueueArr.dataStore[j]);
+  }
+
+  for (let k = 0; k < 10; k++) {
+    if (bin[k].length > 0) {
+      for (let l = 0; l < bin[k].length; l++) {
+        finalArr.enqueue(parseInt(bin[k][l]));
+      }
+    }
+  }
+
+  return finalArr.dataStore;
 }
 
-describe("RADIX SORT", () => {
+describe.skip("RADIX SORT", () => {
   it("Should First Sort The 1s Then 10s Of The Array", () => {
     const arr = [91, 46, 85, 15, 92, 35, 31, 22];
+    const arr2 = [45, 72, 93, 51, 21, 16, 70, 41, 27, 31];
 
     expect(radixSort(arr)).toEqual([15, 22, 31, 35, 46, 85, 91, 92]);
+    expect(radixSort(arr2)).toEqual([16, 21, 27, 31, 41, 45, 51, 70, 72, 93]);
   });
 });
