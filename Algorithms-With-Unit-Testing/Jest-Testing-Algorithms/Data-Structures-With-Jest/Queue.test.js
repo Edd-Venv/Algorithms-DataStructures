@@ -164,48 +164,51 @@ const toStringArr = arr => {
 function radixSort(arr) {
   arr = toStringArr(arr);
   const bin = {};
-  const enqueueArr = new Queue();
-  const finalArr = new Queue();
+  const onesQueue = new Queue();
+  const tensQueue = new Queue();
 
   // Sorting The Ones
   for (let i = 0; i < 10; i++) {
-    bin[i] = [];
+    bin[i] = new Queue();
   }
 
   for (let j = 0; j < arr.length; j++) {
-    bin[arr[j][1]].push(arr[j]);
+    bin[arr[j][1]].enqueue(arr[j]);
   }
-
+  console.log("First STate of Bin", bin);
   for (let k = 0; k < arr.length; k++) {
-    if (bin[k].length > 0) {
-      for (let l = 0; l < bin[k].length; l++) {
-        enqueueArr.enqueue(bin[k][l]);
+    for (let l = 0; l < arr.length; l++) {
+      if (bin[k].length() > 0) {
+        onesQueue.enqueue(bin[k].dequeue());
       }
     }
   }
+  console.log("SEcond State of Bin", bin);
+  console.log(("Sorted in 1s place", onesQueue));
+  // Sorting The Tens
 
-  //Sorting the Tens
-
-  for (let i = 0; i < 10; i++) {
-    bin[i] = [];
+  for (let j = 0; j < arr.length; j++) {
+    for (let k = 0; k < arr.length; k++) {
+      if (onesQueue.dataStore[j]) {
+        bin[onesQueue.dataStore[j][0]].enqueue(onesQueue.dequeue());
+      }
+    }
   }
-
-  for (let j = 0; j < enqueueArr.length(); j++) {
-    bin[enqueueArr.dataStore[j][0]].push(enqueueArr.dataStore[j]);
-  }
+  console.log("second STate of onesQueue", onesQueue);
+  console.log("Bin filled with sorted 10s", bin);
 
   for (let k = 0; k < 10; k++) {
-    if (bin[k].length > 0) {
-      for (let l = 0; l < bin[k].length; l++) {
-        finalArr.enqueue(parseInt(bin[k][l]));
+    for (let l = 0; l < 10; l++) {
+      if (bin[k].length() > 0) {
+        tensQueue.enqueue(parseInt(bin[k].dequeue()));
       }
     }
   }
 
-  return finalArr.dataStore;
+  return tensQueue.dataStore;
 }
 
-describe.skip("RADIX SORT", () => {
+describe("RADIX SORT", () => {
   it("Should First Sort The 1s Then 10s Of The Array", () => {
     const arr = [91, 46, 85, 15, 92, 35, 31, 22];
     const arr2 = [45, 72, 93, 51, 21, 16, 70, 41, 27, 31];
