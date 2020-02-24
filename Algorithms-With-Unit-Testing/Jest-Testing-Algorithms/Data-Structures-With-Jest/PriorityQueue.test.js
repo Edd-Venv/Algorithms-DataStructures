@@ -39,29 +39,64 @@ class priorityQueue {
     return false;
   }
 
+  splice(arr, index) {
+    const length = this.dataStore.length;
+    const spliceQueue = new Queue();
+
+    for (let i = 0; i < length; i++) {
+      if (this.dataStore[i] !== this.dataStore[index]) {
+        spliceQueue.enqueue(this.dataStore[i]);
+      }
+    }
+    this.dataStore = spliceQueue.dataStore;
+
+    return arr[index];
+  }
+
   pEnqueue(name, code) {
     return this.dataStore.push(this.joinNameAndCode(name, code));
   }
   pDequeue() {
-    return this.dataStore.splice(this.selectPatient(this.dataStore));
+    return this.splice(this.dataStore, this.selectPatient(this.dataStore));
   }
 }
 
-describe("PRIORITY QUEUE", () => {
+describe.skip("PRIORITY QUEUE", () => {
   it("Should Select The Right Patient", () => {
     const arr = ["3 luke", "1 Mack", "5 John", "4 Matthew"];
     const q = new priorityQueue();
     expect(q.selectPatient(arr)).toBe(1);
   });
+
+  it("SPLICE Should Remove Element At Desired Index", () => {
+    const q = new priorityQueue();
+    const arr = ["3 luke", "1 Mack", "5 John", "4 Matthew"];
+    q.dataStore = arr;
+    q.splice(q.dataStore, q.selectPatient(q.dataStore));
+    q.splice(q.dataStore, q.selectPatient(q.dataStore));
+    expect(q.dataStore).toEqual(["5 John", "4 Matthew"]);
+  });
+
   it("Should Remove Elements Based On A Priority Constraint", () => {
     const pQueue = new priorityQueue();
     pQueue.pEnqueue("luke", 3);
     pQueue.pEnqueue("Mack", 4);
     pQueue.pEnqueue("John", 1);
+    pQueue.pEnqueue("Mathew", 5);
     pQueue.pDequeue();
-    expect(pQueue.dataStore).toEqual(["3 luke", "4 Mack"]);
+    pQueue.pDequeue();
+    expect(pQueue.dataStore).toEqual(["4 Mack", "5 Mathew"]);
   });
-  it("", () => {});
+
+  it("Should Use A Queue(FIFO) When Paitents Have The Same Code", () => {
+    const pQueue = new priorityQueue();
+    pQueue.pEnqueue("luke", 3);
+    pQueue.pEnqueue("Mack", 3);
+    pQueue.pEnqueue("John", 3);
+    pQueue.pDequeue();
+    pQueue.pDequeue();
+    expect(pQueue.dataStore).toEqual(["3 John"]);
+  });
 });
 
 describe.skip("REQUIRE", () => {
