@@ -46,7 +46,7 @@ class Queue {
   }
 }
 
-describe("QUEUE", () => {
+describe.skip("QUEUE", () => {
   it("Should Enqueue To The DataStore", () => {
     const queue = new Queue();
     queue.enqueue(2);
@@ -208,7 +208,7 @@ function radixSort(arr) {
   return tensQueue.dataStore;
 }
 
-describe("RADIX SORT", () => {
+describe.skip("RADIX SORT", () => {
   it("Should First Sort The 1s Then 10s Of The Array", () => {
     const arr = [91, 46, 85, 15, 92, 35, 31, 22];
     const arr2 = [45, 72, 93, 51, 21, 16, 70, 41, 27, 31];
@@ -217,3 +217,5 @@ describe("RADIX SORT", () => {
     expect(radixSort(arr2)).toEqual([16, 21, 27, 31, 41, 45, 51, 70, 72, 93]);
   });
 });
+
+exports.exportedQueue = Queue;
