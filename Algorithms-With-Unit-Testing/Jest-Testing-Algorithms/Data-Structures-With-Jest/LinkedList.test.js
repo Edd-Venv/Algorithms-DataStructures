@@ -43,7 +43,31 @@ describe("LINKED LIST", () => {
     const llist = new LinkedList();
     llist.unshift(1);
     llist.unshift(2);
+
     expect(llist).toHaveProperty("head.next.data", 1);
     expect(llist).toHaveProperty("length", 2);
+  });
+
+  it("FIND Should Search A Node Return It", () => {
+    const llist = new LinkedList();
+    llist.unshift(1);
+    llist.unshift(2);
+
+    expect(llist.find(1)).toMatchObject({ data: 1, next: null });
+    expect(llist.find(2)).toMatchObject({
+      data: 2,
+      next: { data: 1, next: null }
+    });
+    expect(llist).toHaveProperty("length", 2);
+  });
+
+  it("INSERT Should Insert A New Node", () => {
+    const llist = new LinkedList();
+    llist.unshift(3);
+    llist.unshift(1);
+    llist.insert(2, 1);
+
+    expect(llist).toHaveProperty("head.next.next.data", 3);
+    expect(llist).toHaveProperty("length", 3);
   });
 });
