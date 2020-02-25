@@ -19,6 +19,7 @@ class LinkedList {
     this.shift;
     this.pop;
     this.push;
+    this.display;
   }
 
   unshift(data) {
@@ -101,6 +102,9 @@ class LinkedList {
   }
 
   insert(data, item) {
+    if (!this.find(item)) {
+      return false;
+    }
     const current = this.find(item);
     const newNode = new Node(data, current.next);
     current.next = newNode;
@@ -108,15 +112,32 @@ class LinkedList {
   }
 
   remove(item, prevItem) {
+    if (!this.head) {
+      return false;
+    }
+    if (this.length === 1) {
+      return this.shift();
+    }
     const previous = this.find(prevItem);
     const current = this.find(item);
     previous.next = current.next;
     current.next = null;
     this.length--;
   }
+
+  display() {
+    if (!this.head) {
+      return false;
+    }
+    let currentNode = this.head;
+    while (!(current.next == null)) {
+      console.log(currNode.next.element);
+      currentNode = currentNode.next;
+    }
+  }
 }
 
-describe("LINKED LIST", () => {
+describe.skip("LINKED LIST", () => {
   it("UNSHIFT Should Add A Node At The begining Of The LinkedList", () => {
     const llist = new LinkedList();
     llist.unshift(1);
