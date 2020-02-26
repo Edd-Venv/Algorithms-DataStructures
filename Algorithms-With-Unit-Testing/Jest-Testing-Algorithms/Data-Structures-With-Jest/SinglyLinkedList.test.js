@@ -137,7 +137,7 @@ class LinkedList {
   }
 }
 
-describe.skip("LINKED LIST", () => {
+describe.skip("SINGLY LINKED LIST", () => {
   it("UNSHIFT Should Add A Node At The begining Of The LinkedList", () => {
     const llist = new LinkedList();
     llist.unshift(1);
